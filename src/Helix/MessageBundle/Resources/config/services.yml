@@ -1,0 +1,4 @@
+services:
+#    helix_message.example:
+#        class: Helix\MessageBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

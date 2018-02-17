@@ -1,0 +1,54 @@
+{% extends '@HelixFront/Template/Layout.html.twig' %}
+
+{% block title %}Blog | Helix{% endblock title %}
+
+{% block pagetitle %} Blog {% endblock %}
+{% block pageracine %} Accueil {% endblock %}
+{% block pageactuelle %} Blog {% endblock %}
+
+{% block container %}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                {% for blog in blogs %}
+                <div class="col-md-4 col-sm-6">
+                    <div class="blog-box blog-grid-box">
+                        <div class="blog-grid-box-img">
+                            <img src="{{asset ('assets/img/upload/'~ blog.nomImage)}}" class="img-responsive" alt="" />
+                        </div>
+
+                        <div class="blog-grid-box-content">
+
+                            <h4>{{ blog.titre }}</h4>
+                            <p>{{ blog.shortdescription }}</p>
+                            <a href="{{ path('detailarticle', {'id': blog.id}) }}" class="theme-cl" title="Lire la suite.." style="position: relative">Lire la suite...</a>
+                        </div>
+
+                    </div>
+                </div>
+                    {% endfor %}
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bs-example">
+                        <ul class="pagination">
+                            <li><a href="#">«</a></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">»</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock container %}

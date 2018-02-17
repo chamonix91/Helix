@@ -1,0 +1,74 @@
+{% extends 'HelixFrontBundle:Template:Layout.html.twig' %}
+
+{% block title %}Mes Projets | Helix{% endblock title %}
+
+{% block pagetitle %} Mes projets {% endblock %}
+{% block pageracine %} accueil {% endblock %}
+{% block pageactuelle %} mes projets {% endblock %}
+
+{% block container %}
+
+
+
+    <!-- ================ Profile Name Section ======================= -->
+    <section class="padd-0">
+        <div class="container">
+            <div class="col-md-12 translateY-60 col-sm-12">
+                <!-- General Information -->
+                <div class="add-listing-box edit-info mrg-bot-25 padd-bot-30 padd-top-25">
+                    <div class="listing-box-header">
+                        <div class="avater-box">
+                            <img src="{{ asset('assets/img/avatar-homme.png') }}" class="img-responsive img-circle edit-avater" alt="" />
+                            <span class="avater-status status-pulse online"></span>
+                        </div>
+                        <h3>{{ app.user.nom }} {{ app.user.prenom }} </h3>
+                        <p>270 Listing</p>
+                    </div>
+                </div>
+                <!-- End General Information -->
+            </div>
+        </div>
+    </section>
+    <!-- ================ End Profile Name Section ======================= -->
+
+
+    <!-- ================ Start Manage Listing ======================= -->
+    <section class="manage-listing padd-top-0">
+        <div class="container">
+            <div class="col-md-12 col-sm-12">
+
+
+                <!-- Start All Listing List -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="small-list-wrapper">
+                            <ul>
+                                {% for dossier in dossiers %}
+                                <li>
+                                    <div class="small-listing-box light-gray">
+                                        <div class="small-list-img">
+                                            <img src="{{ asset('assets/img/image-1.jpg') }}" class="img-responsive" alt="" />
+                                        </div>
+                                        <div class="small-list-detail">
+                                            <h4>{{ dossier.nom }}</h4>
+                                            <p><a href="#" title="Food & restaurant">Food & restaurant</a> | Jan 10 2018</p>
+                                        </div>
+                                        <div class="small-list-action">
+                                            <a href="{{ path('dossier_edit', {'id': dossier.id}) }}" class="light-gray-btn btn-square" data-placement="top" data-toggle="tooltip" title="Edit Item"><i class="ti-pencil"></i></a>
+                                            <a href="{{ path('dossier_deletelink', {'id': dossier.id}) }}" class="theme-btn btn-square" data-toggle="tooltip" title="Delete Item"><i class="ti-trash"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End All Listing List -->
+            </div>
+        </div>
+    </section>
+    <bR><bR><bR><bR><bR><bR>
+    <!-- ================ End Start Manage Listing ======================= -->
+
+{% endblock container %}

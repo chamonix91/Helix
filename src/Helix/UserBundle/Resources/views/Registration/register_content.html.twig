@@ -1,0 +1,27 @@
+{% extends '@HelixUser/Security/login_content.html.twig' %}
+
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block form %}
+    <h2>Inscr<span class="theme-cl">iption</span></h2>
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register')}) }}
+
+    {{ form_widget(form.email, { 'attr': {'class': "form-control", 'placeholder': 'email'} }) }}
+
+    {{ form_widget(form.username, { 'attr': {'class': "form-control", 'placeholder': 'username'} }) }}
+
+    {{ form_widget(form.plainPassword.first, { 'attr': {'class': "form-control", 'placeholder': 'mot de passe'} }) }}
+
+    {{ form_widget(form.plainPassword.second, { 'attr': {'class': "form-control", 'placeholder': 'répétez mot de passe'} }) }}
+
+
+    <div class="text-center">
+        <button type="submit" class="btn add-field theme-btn">Inscription</button>
+    </div>
+{{ form_end(form) }}
+
+{% endblock form %}
+
+{% block csrf %}{% endblock csrf %}

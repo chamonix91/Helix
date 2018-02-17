@@ -1,0 +1,145 @@
+{% extends 'HelixFrontBundle:Template:Layout.html.twig' %}
+
+{% block title %}Ajouter Projet | Helix{% endblock title %}
+
+{% block pagetitle %} Ajouter un projet {% endblock %}
+{% block pageracine %} Accueil {% endblock %}
+{% block pageactuelle %} Ajout projet {% endblock %}
+
+{% block container %}
+    <section>
+        <div class="container">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="add-listing-box general-info mrg-bot-25 padd-bot-30 padd-top-25">
+                    {% block titre %}<div class="listing-box-header">
+                        <i class="fa fa-address-card"></i>
+                        <h3>Créer votre projet</h3>
+                        <p>vous pouvez donner les détails de votre dossier</p>
+                    </div>
+                    {% endblock titre %}
+                    {% block form %}
+
+                        {{ form_start(form) }}
+                        <div class="extra-field-box">
+                            <div class="multi-box">
+                                <div class="dublicat-box mrg-bot-40">
+                                    <div class="row mrg-0">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Titre</label>
+                                            {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} } ) }}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-6 col-sm-6">
+                                            <label>Date d'ouverture</label>
+                                            {{ form_widget(form.dateouverture, { 'attr': {'class': 'form-control'} }) }}
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <label>Date de cloture</label>
+                                            {{ form_widget(form.datecloture, { 'attr': {'class': 'form-control'} } ) }}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-6 col-sm-6">
+                                            <label>Heure d'ouverture</label>
+                                            {{ form_widget(form.houverture, { 'attr': {'class': 'form-control'} }) }}
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <label>Heure de cloture</label>
+                                            {{ form_widget(form.hcloture, { 'attr': {'class': 'form-control td-input'} } ) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Description</label>
+                                            {{ form_widget(form.description, { 'attr': {'class': 'form-control height-120'} }) }}
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Programme</label>
+                                            {{ form_widget(form.programme, { 'attr': {'class': 'form-control height-120'} }) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Partenaire</label>
+                                            {{ form_widget(form.partenaire, { 'attr': {'class': 'form-control'} } ) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Compagne de communication </label>
+                                            {{ form_widget(form.compagnecom, { 'attr': {'class': 'form-control'} } ) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Pack 1 </label>
+                                            {{ form_widget(form.pack, { 'attr': {'class': 'form-control',
+                                                'placeholder': "Choisissez un pack" }} ) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Pack 2 </label>
+                                            {{ form_widget(form.pack2, { 'attr': {'class': 'form-control',
+                                                'placeholder': "Choisissez un pack" }} ) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row mrg-0">
+                                        <div class="col-md-12 col-sm-12">
+                                            <label>Pack 3 </label>
+                                            {{ form_widget(form.pack3, { 'attr': {'class': 'form-control',
+                                                'placeholder': "Choisissez un pack" }} ) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center"><button type="submit" class="btn theme-btn">Créer dossier</button></div>
+                        </div>
+                        {{ form_end(form) }}
+
+                    {% endblock form %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- Date Dropper Script-->
+    <script>
+        $('#reservation-date').dateDropper();
+    </script>
+
+    <!-- Time Dropper Script-->
+    <script>
+        this.$('#reservation-time').timeDropper({
+            setCurrentTime: false,
+            meridians: true,
+            primaryColor: "#e8212a",
+            borderColor: "#e8212a",
+            minutesInterval: '15'
+        });
+    </script>
+
+{% endblock %}

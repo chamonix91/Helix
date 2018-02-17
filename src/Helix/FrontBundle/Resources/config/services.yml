@@ -1,0 +1,4 @@
+services:
+#    helix_front.example:
+#        class: Helix\FrontBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

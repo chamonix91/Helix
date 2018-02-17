@@ -1,0 +1,6 @@
+helix_front_homepage:
+    path:     /
+    defaults: { _controller: HelixFrontBundle:Default:index }
+index:
+    path:     /index
+    defaults: { _controller: HelixFrontBundle:Main:index }

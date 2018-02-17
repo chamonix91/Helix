@@ -1,0 +1,33 @@
+dossier_index:
+    path:     /
+    defaults: { _controller: "HelixProjetBundle:Dossier:index" }
+    methods:  GET
+
+dossier_show:
+    path:     /{id}/show
+    defaults: { _controller: "HelixProjetBundle:Dossier:show" }
+    methods:  GET
+
+dossier_new:
+    path:     /new
+    defaults: { _controller: "HelixProjetBundle:Dossier:new" }
+    methods:  [GET, POST]
+
+dossier_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HelixProjetBundle:Dossier:edit" }
+    methods:  [GET, POST]
+
+dossier_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HelixProjetBundle:Dossier:delete" }
+    methods:  DELETE
+
+dossier_deletelink:
+    path:     /{id}/deleteproject
+    defaults: { _controller: HelixProjetBundle:Dossier:deletelink  }
+
+
+dossier_note:
+    path:     /{id}/note
+    defaults: { _controller: HelixProjetBundle:Dossier:note  }

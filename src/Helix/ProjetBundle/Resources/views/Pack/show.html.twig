@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pack</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pack.id }}</td>
+            </tr>
+            <tr>
+                <th>NOM</th>
+                <td>{{ pack.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ pack.prix }}</td>
+            </tr>
+            <tr>
+                <th>Offre1</th>
+                <td>{{ pack.offre1 }}</td>
+            </tr>
+            <tr>
+                <th>Offre2</th>
+                <td>{{ pack.offre2 }}</td>
+            </tr>
+            <tr>
+                <th>Offre3</th>
+                <td>{{ pack.offre3 }}</td>
+            </tr>
+            <tr>
+                <th>Offre4</th>
+                <td>{{ pack.offre4 }}</td>
+            </tr>
+            <tr>
+                <th>Offre5</th>
+                <td>{{ pack.offre5 }}</td>
+            </tr>
+            <tr>
+                <th>Offre6</th>
+                <td>{{ pack.offre6 }}</td>
+            </tr>
+            <tr>
+                <th>Offre7</th>
+                <td>{{ pack.offre7 }}</td>
+            </tr>
+            <tr>
+                <th>Offre8</th>
+                <td>{{ pack.offre8 }}</td>
+            </tr>
+            <tr>
+                <th>Offre9</th>
+                <td>{{ pack.offre9 }}</td>
+            </tr>
+            <tr>
+                <th>Offre10</th>
+                <td>{{ pack.offre10 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pack_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('pack_edit', { 'id': pack.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+helix_projet_dossier:
+    resource: "@HelixProjetBundle/Resources/config/routing/dossier.yml"
+    prefix:   /dossier
+
+helix_projet_pack:
+    resource: "@HelixProjetBundle/Resources/config/routing/pack.yml"
+    prefix:   /pack
+
+helix_projet_homepage:
+    path:     /
+    defaults: { _controller: HelixProjetBundle:Default:index }
+
+mesdossiers:
+    path:     /myprojects
+    defaults: { _controller: HelixProjetBundle:Dossier:userdossier }
+

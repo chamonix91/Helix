@@ -1,0 +1,125 @@
+{% extends '@HelixProjet/Dossier/new.html.twig' %}
+
+{% block title %}Ajout Pack | Helix{% endblock title %}
+
+{% block pagetitle %} Ajouter un pack {% endblock %}
+{% block pageracine %} Accueil {% endblock %}
+{% block pageactuelle %} Ajout Pack {% endblock %}
+
+{% block titre %}<div class="listing-box-header">
+    <i class="ti-shopping-cart theme-cl"></i>
+    <h3>Ajouter un pack</h3>
+    <p>vous pouvez ajouter un nouveau pack ici</p>
+</div>
+{% endblock titre %}
+
+
+{% block form %}
+
+
+
+
+    {{ form_start(form) }}
+    <div class="extra-field-box">
+        <div class="multi-box">
+            <div class="dublicat-box mrg-bot-40">
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Nom</label>
+                        {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Prix</label>
+                        {{ form_widget(form.prix, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 1</label>
+                        {{ form_widget(form.offre1, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 2</label>
+                        {{ form_widget(form.offre2, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 3</label>
+                        {{ form_widget(form.offre3, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 4</label>
+                        {{ form_widget(form.offre4, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 5</label>
+                        {{ form_widget(form.offre5, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 6</label>
+                        {{ form_widget(form.offre6, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 7</label>
+                        {{ form_widget(form.offre7, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 8</label>
+                        {{ form_widget(form.offre8, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 9</label>
+                        {{ form_widget(form.offre9, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Offre 10</label>
+                        {{ form_widget(form.offre10, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+        <div class="text-center"><button type="submit" class="btn theme-btn">Ajouter</button></div>
+    </div>
+
+    {{ form_end(form) }}
+
+
+{% endblock %}

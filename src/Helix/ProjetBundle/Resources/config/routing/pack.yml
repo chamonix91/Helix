@@ -1,0 +1,24 @@
+pack_index:
+    path:     /
+    defaults: { _controller: "HelixProjetBundle:Pack:index" }
+    methods:  GET
+
+pack_show:
+    path:     /{id}/show
+    defaults: { _controller: "HelixProjetBundle:Pack:show" }
+    methods:  GET
+
+pack_new:
+    path:     /new
+    defaults: { _controller: "HelixProjetBundle:Pack:new" }
+    methods:  [GET, POST]
+
+pack_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HelixProjetBundle:Pack:edit" }
+    methods:  [GET, POST]
+
+pack_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HelixProjetBundle:Pack:delete" }
+    methods:  DELETE

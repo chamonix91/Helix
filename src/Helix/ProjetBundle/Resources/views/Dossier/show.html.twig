@@ -1,0 +1,552 @@
+{% extends '@HelixFront/Template/Layout.html.twig' %}
+
+{% block title %}Profil | Helix{% endblock title %}
+
+{% block pagetitle %} Profil {% endblock %}
+{% block pageracine %} Accueil {% endblock %}
+{% block pageactuelle %} Profil{% endblock %}
+
+{% block navbar %}
+
+    <!-- ================ Listing Detail Basic Information ======================= -->
+    <section class="detail-section" style="background:url({{ asset('assets/img/slider-2.jpg') }});">
+        <div class="overlay" style="background-color: rgb(36, 36, 41); opacity: 0.5;"></div>
+        <div class="profile-cover-content">
+            <div class="container">
+                <div class="cover-buttons">
+                    <ul>
+                        <li><div class="buttons medium button-plain "><i class="fa fa-phone"></i></div></li>
+                        <li><div class="buttons medium button-plain "><i class="fa fa-envelope"></i>{{ user.email }}</div></li>
+                        <li><div class="inside-rating buttons listing-rating theme-btn button-plain"><span class="value">+ {{ dossier.note }}</span> <sup class="out-of"></sup></div></li>
+                        <li><a href="#add-review" class="buttons btn-outlined medium add-review"><i class="fa fa-comments-o"></i><span class="hidden-xs">contacter</span></a></li>
+                        <li><a href="{{ path('dossier_note', {'id': dossier.id}) }}" data-listing-id="74" data-nonce="01a769d424" class="buttons btn-outlined"><i class="fa fa-heart-o"></i><span class="hidden-xs">Recommander</span> </a></li>
+                    </ul>
+                </div>
+                <div class="listing-owner hidden-xs hidden-sm">
+                    <div class="listing-owner-avater">
+                        <img src="{{ asset('assets/img/avatar-homme.png') }}" class="img-responsive img-circle" alt="" />
+                    </div>
+                    <div class="listing-owner-detail">
+                        <h4>{{ user.nom }} {{ user.prenom }}</h4>
+                        <span class="theme-cl">{{ user.email }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================ End Listing Detail Basic Information ======================= -->
+
+{% endblock navbar %}
+
+
+{% block container %}
+
+
+
+
+
+    <!-- ================ Listing Detail Full Information ======================= -->
+    <section class="list-detail">
+        <div class="container">
+            <div class="row">
+                <!-- Start: Listing Detail Wrapper -->
+                <div class="col-md-8 col-sm-8">
+                    <div class="detail-wrapper">
+                        <div class="detail-wrapper-body">
+                            <div class="listing-title-bar">
+                                <h3>{{ dossier.nom }}</h3>
+                                <div>
+                                    {#<a href="#listing-location" class="listing-address">
+                                        <i class="ti-location-pin mrg-r-5"></i>
+                                        2726 Shinn Street, New York
+                                    </a>#}
+
+                                    <div class="rating-box">
+                                        <div class="detail-list-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <a href="#" class="detail-rating-count">47 Rating</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-wrapper">
+                        <div class="detail-wrapper-header">
+                            <h4>Description</h4>
+                        </div>
+                        <div class="detail-wrapper-body">
+                            {{ dossier.description }}
+                        </div>
+                    </div>
+
+                    <div class="detail-wrapper">
+                        <div class="detail-wrapper-header">
+                            <h4>Programme</h4>
+                        </div>
+                        <div class="detail-wrapper-body">
+                            {{ dossier.programme }}
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Listing Detail Wrapper -->
+
+                <!-- Sidebar Start -->
+                <div class="col-md-4 col-sm-12">
+                    <div class="sidebar">
+
+
+
+                        <!-- Start: Opening hour -->
+                        <div class="widget-boxed">
+                            <div class="widget-boxed-header">
+                                <h4><i class="ti-time padd-r-10"></i>Date</h4>
+                            </div>
+                            <div class="widget-boxed-body">
+                                <div class="side-list">
+                                    <ul>
+                                        <li>Date début <span>{{ dossier.dateouverture |date("d-m-y")}}</span></li>
+                                        <li>Date Fin <span>{{ dossier.datecloture |date("d-m-y")}}</span></li><br>
+                                        <li>Horraire d'ouverture <span>{{ dossier.houverture |date("h:m")}}</span></li>
+                                        <li>Horraire de clotûre <span>{{ dossier.hcloture |date("h:m")}}</span></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End: Opening hour -->
+
+
+
+
+                        <!-- Start: Latest Listing -->
+                        <div class="widget-boxed">
+                            <div class="widget-boxed-header">
+                                <h4><i class="ti-check-box padd-r-10"></i>Projets recommandés</h4>
+                            </div>
+                            <div class="widget-boxed-body padd-top-5">
+                                <div class="side-list">
+                                    <ul class="listing-list">
+                                        {% set x = 1  %}
+                                        {% for i in recommande %}
+                                            {% if (i.note)  %}
+                                        {% if x < 6 %}
+
+                                        <li>
+                                            <a href="#">
+                                                <div class="listing-list-img">
+                                                    <img src="{{ asset('assets/img/image-3.jpg') }}" class="img-responsive" alt="">
+                                                </div>
+                                            </a>
+                                            <div class="listing-list-info">
+                                                <h5><a href="{{ path('dossier_show', {'id': i.id}) }}" title="Listing">{{ i.nom }}</a></h5>
+                                                <div class="listing-post-meta">
+                                                    <span class="updated">Commence le {{ i.dateouverture | date('d-m-y') }}</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+
+
+
+                                            {% set x = x + 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End: Latest Listing -->
+
+
+
+
+                    </div>
+                </div>
+                <!-- End: Sidebar Start -->
+            </div>
+        </div>
+    </section>
+    <!-- ================ Listing Detail Full Information ======================= -->
+
+    <!-- ================ Pricing Table ======================= -->
+
+    {% set count = 0 %}
+    {% for pack in packs %}
+
+        {% set count = count + 1 %}
+
+    {% endfor %}
+
+
+
+
+{% if count == 3 %}
+    <section>
+        <div class="container">
+
+
+            <div class="col-md-4 col-sm-4">
+                <div class="package-box">
+                    <div class="package-header">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                        <h3>{{ pack1.nom }}</h3>
+                    </div>
+                    <div class="package-price">
+                        <h2>{{ pack1.prix }}<sup>Dt </sup></h2>
+                    </div>
+                    <div class="package-info">
+                        <ul>
+                            {% if pack1.offre1 %}
+                            <li>{{ pack1.offre1 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre2 %}
+                                <li>{{ pack1.offre2 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre3 %}
+                                <li>{{ pack1.offre3 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre4 %}
+                                <li>{{ pack1.offre4 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre5 %}
+                                <li>{{ pack1.offre5 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre6 %}
+                                <li>{{ pack1.offre6 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre7 %}
+                                <li>{{ pack1.offre7 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre8 %}
+                                <li>{{ pack1.offre8 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre9 %}
+                                <li>{{ pack1.offre9 }}</li>
+                            {% endif %}
+
+                            {% if pack1.offre10 %}
+                                <li>{{ pack1.offre10 }}</li>
+                            {% endif %}
+
+                        </ul>
+                    </div>
+                    <button type="submit" class="btn btn-package">Sign Up</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+                <div class="active package-box">
+                    <div class="package-header">
+                        <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        <h3>{{ pack2.nom }}</h3>
+                    </div>
+                    <div class="package-price">
+                        <h2>{{ pack2.prix }}<sup>Dt </sup></h2>
+                    </div>
+                    <div class="package-info">
+                        <ul>
+                            {% if pack2.offre1 %}
+                                <li>{{ pack2.offre1 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre2 %}
+                                <li>{{ pack2.offre2 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre3 %}
+                                <li>{{ pack2.offre3 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre4 %}
+                                <li>{{ pack1.offre4 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre5 %}
+                                <li>{{ pack2.offre5 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre6 %}
+                                <li>{{ pack2.offre6 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre7 %}
+                                <li>{{ pack2.offre7 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre8 %}
+                                <li>{{ pack2.offre8 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre9 %}
+                                <li>{{ pack2.offre9 }}</li>
+                            {% endif %}
+
+                            {% if pack2.offre10 %}
+                                <li>{{ pack2.offre10 }}</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <button type="submit" class="btn btn-package">Sign Up</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4">
+                <div class="package-box">
+                    <div class="package-header">
+                        <i class="fa fa-cube" aria-hidden="true"></i>
+                        <h3>{{ pack3.nom }}</h3>
+                    </div>
+                    <div class="package-price">
+                        <h2>{{ pack3.prix }}<sup>Dt </sup></h2>
+                    </div>
+                    <div class="package-info">
+                        <ul>
+                            {% if pack3.offre1 %}
+                                <li>{{ pack3.offre1 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre2 %}
+                                <li>{{ pack3.offre2 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre3 %}
+                                <li>{{ pack3.offre3 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre4 %}
+                                <li>{{ pack3.offre4 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre5 %}
+                                <li>{{ pack3.offre5 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre6 %}
+                                <li>{{ pack3.offre6 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre7 %}
+                                <li>{{ pack3.offre7 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre8 %}
+                                <li>{{ pack3.offre8 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre9 %}
+                                <li>{{ pack3.offre9 }}</li>
+                            {% endif %}
+
+                            {% if pack3.offre10 %}
+                                <li>{{ pack3.offre10 }}</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <button type="submit" class="btn btn-package">Sign Up</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endif %}
+
+
+    {% if count == 2 %}
+        <section>
+            <div class="container">
+
+
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="active package-box">
+                        <div class="package-header">
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <h3>{{ pack1.nom }}</h3>
+                        </div>
+                        <div class="package-price">
+                            <h2>{{ pack1.prix }}<sup>Dt </sup></h2>
+                        </div>
+                        <div class="package-info">
+                            <ul>
+                                {% if pack1.offre1 %}
+                                    <li>{{ pack1.offre1 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre2 %}
+                                    <li>{{ pack1.offre2 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre3 %}
+                                    <li>{{ pack1.offre3 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre4 %}
+                                    <li>{{ pack1.offre4 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre5 %}
+                                    <li>{{ pack1.offre5 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre6 %}
+                                    <li>{{ pack1.offre6 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre7 %}
+                                    <li>{{ pack1.offre7 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre8 %}
+                                    <li>{{ pack1.offre8 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre9 %}
+                                    <li>{{ pack1.offre9 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre10 %}
+                                    <li>{{ pack1.offre10 }}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <button type="submit" class="btn btn-package">Sign Up</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="package-box">
+                        <div class="package-header">
+                            <i class="fa fa-cube" aria-hidden="true"></i>
+                            <h3>{{ pack2.nom }}</h3>
+                        </div>
+                        <div class="package-price">
+                            <h2>{{ pack2.prix }}<sup>Dt </sup></h2>
+                        </div>
+                        <div class="package-info">
+                            <ul>
+                                {% if pack2.offre1 %}
+                                    <li>{{ pack2.offre1 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre2 %}
+                                    <li>{{ pack2.offre2 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre3 %}
+                                    <li>{{ pack2.offre3 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre4 %}
+                                    <li>{{ pack1.offre4 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre5 %}
+                                    <li>{{ pack2.offre5 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre6 %}
+                                    <li>{{ pack2.offre6 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre7 %}
+                                    <li>{{ pack2.offre7 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre8 %}
+                                    <li>{{ pack2.offre8 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre9 %}
+                                    <li>{{ pack2.offre9 }}</li>
+                                {% endif %}
+
+                                {% if pack2.offre10 %}
+                                    <li>{{ pack2.offre10 }}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <button type="submit" class="btn btn-package">Sign Up</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    {% endif %}
+
+
+    {% if count == 1 %}
+        <section>
+            <div class="container">
+
+                <div class="col-md-4 col-sm-4">
+
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+                    <div class="active package-box">
+                        <div class="package-header">
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                            <h3>Standard</h3>
+                        </div>
+                        <div class="package-price">
+                            <h2><sup>$ </sup>110<sub>/Month</sub></h2>
+                        </div>
+                        <div class="package-info">
+                            <ul>
+                                <li>3 Designs</li>
+                                <li>3 PSD Designs</li>
+                                <li>4 color Option</li>
+                                <li>10GB Disk Space</li>
+                                <li>Full Support</li>
+                            </ul>
+                        </div>
+                        <button type="submit" class="btn btn-package">Sign Up</button>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+
+                </div>
+
+            </div>
+        </section>
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ================ End Pricing Table ======================= -->
+
+
+
+
+
+
+
+{% endblock %}
+
+

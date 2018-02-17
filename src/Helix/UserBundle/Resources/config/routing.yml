@@ -1,0 +1,7 @@
+helix_user_user:
+    resource: "@HelixUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+helix_user_homepage:
+    path:     /
+    defaults: { _controller: HelixUserBundle:Default:index }

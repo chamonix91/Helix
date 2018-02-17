@@ -1,0 +1,116 @@
+{% extends '@HelixProjet/Dossier/new.html.twig' %}
+
+{% block title %}Modifier Projet | Helix{% endblock title %}
+
+{% block pagetitle %} Modifier un projet {% endblock %}
+{% block pageracine %} Accueil {% endblock %}
+{% block pageactuelle %} Modifier projet {% endblock %}
+
+{% block titre %}<div class="listing-box-header">
+    <i class="fa fa-address-card"></i>
+    <h3>Modifier votre projet</h3>
+    <p>vous pouvez modifier les détails de votre dossier</p>
+</div>
+{% endblock titre %}
+
+
+{% block form %}
+
+
+    {{ form_start(edit_form) }}
+    <div class="extra-field-box">
+        <div class="multi-box">
+            <div class="dublicat-box mrg-bot-40">
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Titre</label>
+                        {{ form_widget(edit_form.nom, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+
+                <div class="row mrg-0">
+                    <div class="col-md-6 col-sm-6">
+                        <label>Date d'ouverture</label>
+                        {{ form_widget(edit_form.dateouverture, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label>Date de cloture</label>
+                        {{ form_widget(edit_form.datecloture, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+
+                <div class="row mrg-0">
+                    <div class="col-md-6 col-sm-6">
+                        <label>Heure d'ouverture</label>
+                        {{ form_widget(edit_form.houverture, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <label>Heure de cloture</label>
+                        {{ form_widget(edit_form.hcloture, { 'attr': {'class': 'form-control td-input'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Description</label>
+                        {{ form_widget(edit_form.description, { 'attr': {'class': 'form-control height-120'} }) }}
+
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Programme</label>
+                        {{ form_widget(edit_form.programme, { 'attr': {'class': 'form-control height-120'} }) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Partenaire</label>
+                        {{ form_widget(edit_form.partenaire, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Compagne de communication </label>
+                        {{ form_widget(edit_form.compagnecom, { 'attr': {'class': 'form-control'} } ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Pack 1 </label>
+                        {{ form_widget(edit_form.pack, { 'attr': {'class': 'form-control',
+                            'placeholder': "Choisissez un pack" }} ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Pack 2 </label>
+                        {{ form_widget(edit_form.pack2, { 'attr': {'class': 'form-control',
+                            'placeholder': "Choisissez un pack" }} ) }}
+                    </div>
+                </div>
+
+                <div class="row mrg-0">
+                    <div class="col-md-12 col-sm-12">
+                        <label>Pack 3 </label>
+                        {{ form_widget(edit_form.pack3, { 'attr': {'class': 'form-control',
+                            'placeholder': "Choisissez un pack" }} ) }}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="text-center"><button type="submit" class="btn theme-btn">Modifier</button></div>
+    </div>
+    {{ form_end(edit_form) }}
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+helix_backoffice:
+    resource: "@HelixBackofficeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+helix_projet:
+    resource: "@HelixProjetBundle/Resources/config/routing.yml"
+    prefix:   /
+
+helix_blog:
+    resource: "@HelixBlogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+helix_front:
+    resource: "@HelixFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
+helix_message:
+    resource: "@HelixMessageBundle/Resources/config/routing.yml"
+    prefix:   /
+
+helix_user:
+    resource: "@HelixUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /messages

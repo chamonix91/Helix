@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Packs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prix</th>
+                <th>Offre1</th>
+                <th>Offre2</th>
+                <th>Offre3</th>
+                <th>Offre4</th>
+                <th>Offre5</th>
+                <th>Offre6</th>
+                <th>Offre7</th>
+                <th>Offre8</th>
+                <th>Offre9</th>
+                <th>Offre10</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pack in packs %}
+            <tr>
+                <td><a href="{{ path('pack_show', { 'id': pack.id }) }}">{{ pack.id }}</a></td>
+                <td>{{ pack.prix }}</td>
+                <td>{{ pack.offre1 }}</td>
+                <td>{{ pack.offre2 }}</td>
+                <td>{{ pack.offre3 }}</td>
+                <td>{{ pack.offre4 }}</td>
+                <td>{{ pack.offre5 }}</td>
+                <td>{{ pack.offre6 }}</td>
+                <td>{{ pack.offre7 }}</td>
+                <td>{{ pack.offre8 }}</td>
+                <td>{{ pack.offre9 }}</td>
+                <td>{{ pack.offre10 }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pack_show', { 'id': pack.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pack_edit', { 'id': pack.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pack_new') }}">Create a new pack</a>
+        </li>
+    </ul>
+{% endblock %}

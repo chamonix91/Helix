@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Blog</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ blog.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ blog.titre }}</td>
+            </tr>
+            <tr>
+                <th>Shortdescription</th>
+                <td>{{ blog.shortdescription }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{% if blog.datecreation %}{{ blog.datecreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Soustitre1</th>
+                <td>{{ blog.soustitre1 }}</td>
+            </tr>
+            <tr>
+                <th>Contenue1</th>
+                <td>{{ blog.contenue1 }}</td>
+            </tr>
+            <tr>
+                <th>Soustitre2</th>
+                <td>{{ blog.soustitre2 }}</td>
+            </tr>
+            <tr>
+                <th>Contenue2</th>
+                <td>{{ blog.contenue2 }}</td>
+            </tr>
+            <tr>
+                <th>Soustitre3</th>
+                <td>{{ blog.soustitre3 }}</td>
+            </tr>
+            <tr>
+                <th>Contenue3</th>
+                <td>{{ blog.contenue3 }}</td>
+            </tr>
+
+            <tr>
+                <th>Image principale</th>
+                <td><img src="{{asset ('assets/img/upload/'~ blog.nomImage)}}" class="img-rounded" alt="Cinque Terre" width="304" height="236" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('blog_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('blog_edit', { 'id': blog.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

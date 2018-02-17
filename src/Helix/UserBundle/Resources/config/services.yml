@@ -1,0 +1,4 @@
+services:
+#    helix_user.example:
+#        class: Helix\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
