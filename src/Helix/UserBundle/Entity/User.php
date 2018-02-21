@@ -3,6 +3,7 @@
 
 namespace Helix\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\MessageBundle\Model\ParticipantInterface;
@@ -74,12 +75,22 @@ class User extends BaseUser implements ParticipantInterface
      */
     private $logo;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Helix\ProjetBundle\Entity\Pack", mappedBy="user", cascade={"remove"}, orphanRemoval=true)
+     * @ORM\JoinColumn(name="idpack", referencedColumnName="id")
+     * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
+     * @Assert\Valid()
+     *
+     */
+    private $pack ;
+
 
 
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->pack = new ArrayCollection();
     }
 
     /**
@@ -210,6 +221,11 @@ class User extends BaseUser implements ParticipantInterface
     public function setLogo($logo)
     {
         $this->logo = $logo;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 
 }

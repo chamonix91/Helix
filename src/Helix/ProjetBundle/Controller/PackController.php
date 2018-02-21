@@ -41,7 +41,7 @@ class PackController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $pack->setIdUser($user);
+            $pack->setUser($user);
             $em->persist($pack);
             $em->flush();
 

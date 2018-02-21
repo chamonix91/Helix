@@ -7,7 +7,9 @@
  */
 
 namespace Helix\ProjetBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Helix\UserBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
@@ -93,14 +95,21 @@ class Pack
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Helix\UserBundle\Entity\User", cascade={"persist"})
-     * @ORM\JoinColumn(name="iduser", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Helix\UserBundle\Entity\User",inversedBy="pack", cascade={"persist","remove"})
+     * @ORM\JoinColumn(name="iduser", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      * @Assert\Type(type="Helix\UserBundle\Entity\User")
      * @Assert\Valid()
      *
      */
-    private $idUser ;
+    private $user ;
 
+    /**
+     * Pack constructor.
+     */
+    public function __construct()
+    {
+
+    }
 
 
     /**
@@ -312,26 +321,31 @@ class Pack
         $this->offre10 = $offre10;
     }
 
+
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
     public function __toString()
     {
         return $this->getNom();
     }
 
-    /**
-     * @return mixed
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 
-    /**
-     * @param mixed $idUser
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-    }
+
 
 
 

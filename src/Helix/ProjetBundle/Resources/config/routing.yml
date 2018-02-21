@@ -14,3 +14,7 @@ mesdossiers:
     path:     /myprojects
     defaults: { _controller: HelixProjetBundle:Dossier:userdossier }
 
+testpack:
+    path:     /newpack
+    defaults: { _controller: HelixProjetBundle:Default:new }
+

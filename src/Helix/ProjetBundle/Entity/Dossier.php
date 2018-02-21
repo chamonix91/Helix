@@ -86,7 +86,7 @@ class Dossier
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="idpack", referencedColumnName="id")
      * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
      * @Assert\Valid()
@@ -96,7 +96,7 @@ class Dossier
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="idpack2", referencedColumnName="id")
      * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
      * @Assert\Valid()
@@ -106,7 +106,7 @@ class Dossier
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="idpack3", referencedColumnName="id")
      * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
      * @Assert\Valid()
