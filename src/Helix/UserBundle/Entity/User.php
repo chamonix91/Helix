@@ -41,12 +41,7 @@ class User extends BaseUser implements ParticipantInterface
      */
     private $prenom;
 
-    /**
-     *
-     * @ORM\Column(type="boolean", nullable= true)
-     *
-     */
-    private $ban;
+
 
 
     /**
@@ -75,22 +70,13 @@ class User extends BaseUser implements ParticipantInterface
      */
     private $logo;
 
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="Helix\ProjetBundle\Entity\Pack", mappedBy="user", cascade={"remove"}, orphanRemoval=true)
-     * @ORM\JoinColumn(name="idpack", referencedColumnName="id")
-     * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
-     * @Assert\Valid()
-     *
-     */
-    private $pack ;
+
 
 
 
     public function __construct()
     {
         parent::__construct();
-        $this->pack = new ArrayCollection();
     }
 
     /**
@@ -157,22 +143,6 @@ class User extends BaseUser implements ParticipantInterface
         $this->prenom = $prenom;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getBan()
-    {
-        return $this->ban;
-    }
-
-    /**
-     * @param mixed $ban
-     */
-    public function setBan($ban)
-    {
-        $this->ban = $ban;
-    }
-
 
 
     /**
@@ -223,9 +193,6 @@ class User extends BaseUser implements ParticipantInterface
         $this->logo = $logo;
     }
 
-    public function __toString()
-    {
-        return $this->getNom();
-    }
+
 
 }

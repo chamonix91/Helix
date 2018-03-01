@@ -5,6 +5,7 @@ namespace Helix\UserBundle\Controller;
 use Helix\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * User controller.
@@ -46,6 +47,35 @@ class UserController extends Controller
         }
 
         return $this->render('@HelixUser/user/new.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Creates a new user entity.
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function newSponsorAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $user = new User();
+        $form = $this->createForm('Helix\UserBundle\Form\RegistrationType', $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+            $user->setPassword($password);
+            $user->setRoles(array('ROLE_SPONSOR'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('user_show', array('id' => $user->getId()));
+        }
+
+        return $this->render('@HelixUser/Registration/RegistrationSponsor.html.twig', array(
             'user' => $user,
             'form' => $form->createView(),
         ));

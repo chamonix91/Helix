@@ -85,6 +85,12 @@ class Dossier
     private $note;
 
     /**
+     * @ORM\Column(type="integer" ,nullable=true)
+     */
+    private $etat;
+
+
+    /**
      *
      * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="idpack", referencedColumnName="id")
@@ -369,6 +375,7 @@ class Dossier
     {
         $this->pack3 = $pack3;
     }
+
 
 
 

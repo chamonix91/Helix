@@ -6,9 +6,6 @@ helix_projet_pack:
     resource: "@HelixProjetBundle/Resources/config/routing/pack.yml"
     prefix:   /pack
 
-helix_projet_homepage:
-    path:     /
-    defaults: { _controller: HelixProjetBundle:Default:index }
 
 mesdossiers:
     path:     /myprojects

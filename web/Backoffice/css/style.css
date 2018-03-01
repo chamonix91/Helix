@@ -202,7 +202,7 @@ ul.sidebar-menu li a.active i {
     transition:all .3s ease-in-out;
 }
 .footer {
-    background: #d19a98;
+    background: #334e6f;
     padding: 20px;
 }
 .footer p {
@@ -210,10 +210,10 @@ ul.sidebar-menu li a.active i {
     letter-spacing: 1px;
 }
 .footer p a {
-    color: #744e7d;
+    color: #ffffff;
 }
 .footer p a:hover {
-    color: #fff;
+    color: #268aca;
 }
 .header {
     left:0;

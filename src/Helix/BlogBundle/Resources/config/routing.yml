@@ -2,10 +2,6 @@ helix_blog_blog:
     resource: "@HelixBlogBundle/Resources/config/routing/blog.yml"
     prefix:   /blog
 
-helix_blog_homepage:
-    path:     /
-    defaults: { _controller: HelixBlogBundle:Default:index }
-
 allarticles:
     path:     /blogs
     defaults: { _controller: HelixBlogBundle:CrudBlog:index }

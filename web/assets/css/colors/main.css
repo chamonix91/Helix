@@ -74,7 +74,7 @@ btn.theme-btn-trans, a.theme-btn-trans{
     border: 1px solid #268aca;
 }
 btn.theme-btn-trans:hover, a.theme-btn-trans:hover, btn.theme-btn-trans:focus, a.theme-btn-trans:focus{
-	background: rgba(255, 67, 30,1);
+	background: rgba(38, 138, 202,1);
     color: #ffffff;
     border-radius: 50px;
     border: 1px solid #268aca;

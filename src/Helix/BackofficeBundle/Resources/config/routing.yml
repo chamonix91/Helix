@@ -1,7 +1,3 @@
-helix_backoffice_homepage:
-    path:     /
-    defaults: { _controller: HelixBackofficeBundle:Default:index }
-
 dashboard:
     path:     /dashboard
     defaults: { _controller: HelixBackofficeBundle:Main:index }

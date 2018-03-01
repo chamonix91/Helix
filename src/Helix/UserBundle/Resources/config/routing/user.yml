@@ -22,3 +22,8 @@ user_delete:
     path:     /{id}/delete
     defaults: { _controller: "HelixUserBundle:User:delete" }
     methods:  DELETE
+
+registration_sponsor:
+    path:     /newSponsor
+    defaults: { _controller: "HelixUserBundle:User:newSponsor" }
+    methods:  [GET, POST]

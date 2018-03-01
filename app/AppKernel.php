@@ -25,6 +25,8 @@ class AppKernel extends Kernel
             new Helix\ProjetBundle\HelixProjetBundle(),
             new Helix\BackofficeBundle\HelixBackofficeBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

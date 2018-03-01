@@ -33,6 +33,7 @@ class PackController extends Controller
      */
     public function newAction(Request $request)
     {
+
         $pack = new Pack();
         $form = $this->createForm('Helix\ProjetBundle\Form\PackType', $pack);
         $form->handleRequest($request);

@@ -1,3 +1,1 @@
-helix_message_homepage:
-    path:     /
-    defaults: { _controller: HelixMessageBundle:Default:index }
+

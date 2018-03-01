@@ -10,6 +10,14 @@ services:
         tags:
             - { name: form.type, alias: app_user_registration }
 
+    fos_user.doctrine_registry:
+        alias: doctrine
+    redirect.after.login:
+        class: Helix\UserBundle\Redirection\AfterLoginRedirection
+        arguments: ["@router"]
+
+
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
@@ -39,3 +47,6 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    Helix\UserBundle\Controller\UserController:
+        autowire: true # or define your controller constructor and configure its arguments explicitly
+        tags: ['controller.service_arguments']
