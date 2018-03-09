@@ -33,9 +33,7 @@ class DossierType extends AbstractType
             ->add('pack2')
             ->add('pack3')
         ;*/
-            ->add('pack', CollectionType::class, array(
-                'entry_type' => PackuserType::class,
-                'entry_options' => array('label' => false),))
+            ->add('pack')
             ->add('pack2', CollectionType::class, array(
                 'entry_type' => PackuserType::class,
                 'entry_options' => array('label' => false),))

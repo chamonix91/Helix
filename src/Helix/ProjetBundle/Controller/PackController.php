@@ -33,12 +33,17 @@ class PackController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
+
+
 
         $pack = new Pack();
         $form = $this->createForm('Helix\ProjetBundle\Form\PackType', $pack);
         $form->handleRequest($request);
         $user= $this->getUser();
         $iduser= $user->getId();
+        $dossier = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('idUser'=>$iduser));
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

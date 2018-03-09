@@ -68,6 +68,7 @@ class UserController extends Controller
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
             $user->setRoles(array('ROLE_SPONSOR'));
+            $user->setEnabled(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -97,12 +98,19 @@ class UserController extends Controller
 
     public function bannirAction(User $user)
     {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('HelixUserBundle:User')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Impossible de trouver cet utilisateur.');
+        }
+
+        $entity->setEnabled(0);
 
 
-        return $this->render('@HelixUser/user/show.html.twig', array(
-            'user' => $user,
-            'delete_form' => $deleteForm->createView(),
-        ));
+
+
+        return $this->redirect($this->generateUrl('dossier_index'));
     }
 
     /**
@@ -163,5 +171,19 @@ class UserController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+
+    public function blockedUserAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('HelixUserBundle:User')->findby(array('enabled'=> 0));
+
+
+        return $this->render('@HelixUser/user/index.html.twig', array(
+            'users' => $users,
+        ));
+
+
     }
 }

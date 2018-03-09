@@ -27,3 +27,8 @@ registration_sponsor:
     path:     /newSponsor
     defaults: { _controller: "HelixUserBundle:User:newSponsor" }
     methods:  [GET, POST]
+
+ban:
+    path:     /banned
+    defaults: { _controller: "HelixUserBundle:User:blockedUser" }
+    methods:  [GET, POST]

@@ -92,30 +92,28 @@ class Dossier
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="idpack", referencedColumnName="id")
-     * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
-     * @Assert\Valid()
+     * @var array
+     *
+     *@ORM\Column(type="array" ,nullable=true)
      *
      */
     private $pack ;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="idpack2", referencedColumnName="id")
-     * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
-     * @Assert\Valid()
+     *
+     * @var array
+     *
+     *@ORM\Column(type="array" ,nullable=true)
      *
      */
     private $pack2 ;
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="idpack3", referencedColumnName="id")
-     * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
-     * @Assert\Valid()
+     * @var array
+     *
+     * @ORM\Column(type="array" ,nullable=true)
      *
      */
     private $pack3 ;
@@ -375,6 +373,8 @@ class Dossier
     {
         $this->pack3 = $pack3;
     }
+
+
 
 
 
