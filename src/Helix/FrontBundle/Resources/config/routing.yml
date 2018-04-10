@@ -1,3 +1,8 @@
 index:
     path:     /
     defaults: { _controller: HelixFrontBundle:Main:index }
+
+
+allsponsors:
+    path:     /allsponsors
+    defaults: { _controller: HelixFrontBundle:Main:allsponsor }

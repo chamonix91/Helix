@@ -28,7 +28,27 @@ registration_sponsor:
     defaults: { _controller: "HelixUserBundle:User:newSponsor" }
     methods:  [GET, POST]
 
+allSponsors:
+    path:     /allSponsors
+    defaults: { _controller: "HelixUserBundle:User:allsponsors" }
+    methods:  [GET, POST]
+
 ban:
     path:     /banned
     defaults: { _controller: "HelixUserBundle:User:blockedUser" }
+    methods:  [GET, POST]
+
+ban_user:
+    path:     /{id}/ban
+    defaults: { _controller: "HelixUserBundle:User:bannir" }
+    methods:  [GET, POST]
+
+toGold:
+    path:     /{id}/togold
+    defaults: { _controller: "HelixUserBundle:User:toGold" }
+    methods:  [GET, POST]
+
+toPremium:
+    path:     /{id}/topremium
+    defaults: { _controller: "HelixUserBundle:User:toPremium" }
     methods:  [GET, POST]

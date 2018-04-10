@@ -68,11 +68,21 @@ class User extends BaseUser implements ParticipantInterface
      */
     private $logo;
 
-    
+    /**
+     *
+     * @ORM\Column(type="string", nullable= true)
+     *
+     */
+    private $type="silver";
 
-
-
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Preferences", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="preference", referencedColumnName="id")
+     * @Assert\Type(type="Helix\ProjetBundle\Entity\Preference")
+     * @Assert\Valid()
+     *
+     */
+    private $preference ;
 
     /**
      * @return File
@@ -186,6 +196,38 @@ class User extends BaseUser implements ParticipantInterface
     public function setLogo($logo)
     {
         $this->logo = $logo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreference()
+    {
+        return $this->preference;
+    }
+
+    /**
+     * @param mixed $preference
+     */
+    public function setPreference($preference)
+    {
+        $this->preference = $preference;
     }
 
 

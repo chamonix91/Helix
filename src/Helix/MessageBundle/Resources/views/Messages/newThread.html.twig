@@ -1,13 +1,18 @@
-{% extends '@HelixFront/Messages/Layout.html.twig' %}
+{% extends '@HelixMessage/layout.html.twig' %}
 
-{% block fos_message_content %}
+{% block container %}
 
 <h2>{% trans from 'FOSMessageBundle' %}send_new{% endtrans %}</h2>
 
 <form action="{{ url('fos_message_thread_new') }}" method="post">
-    {{ form_widget(form) }}
+    {{ form_widget(form.recipient, { 'attr': {'class': "form-control", 'placeholder': 'Destinataire'} }) }}
+    {{ form_widget(form.subject, { 'attr': {'class': "form-control", 'placeholder': 'Sujet'} }) }}
+    {{ form_widget(form.body, { 'attr': {'class': "form-control height-120", 'placeholder': 'Votre message ici...'} }) }}
 
-    <input type="submit" />
+    <div class="text-center">
+        <button type="submit" class="btn add-field theme-btn">Envoyer</button>
+    </div>
 </form>
+    <br><br><br><br><br><br>
 
 {% endblock %}

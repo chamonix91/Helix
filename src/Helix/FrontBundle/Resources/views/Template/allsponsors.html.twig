@@ -1,0 +1,106 @@
+{% extends '@HelixFront/Template/Layout.html.twig' %}
+
+{% block title %}Tous les sponsors | Helix{% endblock title %}
+
+{% block navbar %}
+    <section class="title-transparent page-title" style="background:url({{ asset('assets/img/title-bg.jpg') }});">
+        <div class="container">
+            <div class="title-content">
+                <h1>{% block pagetitle %}Tous les sponsors{% endblock pagetitle %}</h1>
+                <div class="breadcrumbs">
+                    <a href="{{ path('index') }}">{% block pageracine %}Home{% endblock pageracine %}</a>
+                    <span class="gt3_breadcrumb_divider"></span>
+                    <span class="current">{% block pageactuelle %}Tous les sponsors{% endblock pageactuelle %}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+{% endblock navbar %}
+
+{% block container %}
+{% for sponsor in sponsors %}
+{% endfor %}
+
+    <section>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8 col-sm-7">
+                    <a href="#" class="place-box">
+                        <div class="place-box-content">
+                            <h4></h4>
+                            <span></span>
+                        </div>
+                        <div class="place-box-bg" style="background-image: url({{ asset('assets/img/sponsors/coca-cola.png') }});"></div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-sm-5">
+                    <a href="#" class="place-box">
+                        <div class="place-box-content">
+                            <h4></h4>
+                            <span></span>
+                        </div>
+                        <div class="place-box-bg" style="background-image: url({{ asset('assets/img/sponsors/logo-orange.jpg') }});"></div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-5">
+                    <a href="#" class="place-box">
+                        <div class="place-box-content">
+                            <h4></h4>
+                            <span></span>
+                        </div>
+                        <div class="place-box-bg" style="background-image: url(assets/img/places/place-3.jpg);"></div>
+                    </a>
+                </div>
+
+                <div class="col-md-8 col-sm-7">
+                    <a href="#" class="place-box">
+                        <div class="place-box-content">
+                            <h4></h4>
+                            <span></span>
+                        </div>
+                        <div class="place-box-bg" style="background-image: url(assets/img/places/place-4.jpg);"></div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <a href="#" class="place-box">
+                        <div class="place-box-content">
+                            <h4></h4>
+                            <span></span>
+                        </div>
+                        <div class="place-box-bg" style="background-image: url(assets/img/places/place-5.jpg);"></div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+                    <a href="#" class="place-box">
+                        <div class="place-box-content">
+                            <h4> </h4>
+                            <span></span>
+                        </div>
+                        <div class="place-box-bg" style="background-image: url(assets/img/places/place-6.jpg);"></div>
+                    </a>
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+                    <a href="#" class="place-box">
+                        <div class="place-box-content">
+                            <h4></h4>
+                            <span></span>
+                        </div>
+                        <div class="place-box-bg" style="background-image: url(assets/img/places/place-7.jpg);"></div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

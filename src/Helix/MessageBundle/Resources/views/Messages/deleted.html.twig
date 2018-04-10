@@ -1,9 +1,11 @@
-{% extends 'FOSMessageBundle::layout.html.twig' %}
+{% extends '@HelixMessage/layout.html.twig' %}
 
-{% block fos_message_content %}
+{% block container %}
 
-<h2>{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</h2>
+<center><h2>Messages supprimés</h2></center>
+    <br><br><br><br>
 
-{% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
+
+    {% include '@HelixMessage/Messages/threads_list.html.twig' with {'threads': threads} %}
 
 {% endblock %}

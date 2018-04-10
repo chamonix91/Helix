@@ -42,7 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
-            <ul class="nav top-menu">
+{#            <ul class="nav top-menu">
                 <!-- settings start -->
                 <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -215,7 +215,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </ul>
                 </li>
                 <!-- notification dropdown end -->
-            </ul>
+            </ul>#}
             <!--  notification end -->
         </div>
         <div class="top-nav clearfix">
@@ -225,9 +225,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <input type="text" class="form-control search" placeholder=" Rechercher">
                 </li>
                 <!-- user login dropdown start-->
-                <li class="dropdown">
+                {#<li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <img alt="" src="images/2.png">
+                        <img alt="" src="{{ asset('Backoffice/images/2.png') }}">
                         <span class="username">John Doe</span>
                         <b class="caret"></b>
                     </a>
@@ -236,7 +236,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                         <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
                     </ul>
-                </li>
+                </li>#}
                 <!-- user login dropdown end -->
 
             </ul>
@@ -264,9 +264,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </a>
                         <ul class="sub">
                             <li><a href="{{ path('user_index') }}">Tous les utilisateurs</a></li>
-                            <li><a href="{{ path('blog_new') }}">Tous les sponsors</a></li>
-                            <li><a href="{{ path('blog_new') }}">Ajouter un Sponsor</a></li>
-                            <li><a href="{{ path('blog_new') }}">Utilisateurs bloqués</a></li>
+                            <li><a href="{{ path('allSponsors') }}">Tous les sponsors</a></li>
+                            <li><a href="{{ path('registration_sponsor') }}">Ajouter un Sponsor</a></li>
+                            <li><a href="{{ path('ban') }}">Utilisateurs bloqués</a></li>
 
 
                         </ul>
@@ -320,7 +320,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <i class="fa fa-eye"> </i>
                         </div>
                         <div class="col-md-8 market-update-left">
-                            <h4>Visitors</h4>
+                            <h4>Helix</h4>
                             <h3>13,500</h3>
                             <p>Other hand, we denounce</p>
                         </div>

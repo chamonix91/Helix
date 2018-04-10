@@ -1,9 +1,13 @@
-{% extends 'FOSMessageBundle::layout.html.twig' %}
+{% extends '@HelixMessage/layout.html.twig' %}
 
-{% block fos_message_content %}
+{% block container %}
 
-<h2>{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</h2>
 
-{% include 'FOSMessageBundle:Message:threads_list.html.twig' with {'threads': threads} %}
+    <center><h2> Messages envoyés </h2></center>
+    <br><br><br><br>
+
+    {% include '@HelixMessage/Messages/threads_list.html.twig' with {'threads': threads} %}
+
+
 
 {% endblock %}

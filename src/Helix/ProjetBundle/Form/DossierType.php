@@ -29,17 +29,10 @@ class DossierType extends AbstractType
             ->add('programme')
             ->add('partenaire')
             ->add('compagnecom')
-            /*->add('pack')
+            ->add('pack')
             ->add('pack2')
             ->add('pack3')
-        ;*/
-            ->add('pack')
-            ->add('pack2', CollectionType::class, array(
-                'entry_type' => PackuserType::class,
-                'entry_options' => array('label' => false),))
-            ->add('pack3', CollectionType::class, array(
-                'entry_type' => PackuserType::class,
-                'entry_options' => array('label' => false),));
+            ->add('preference', PreferenceType::class);
     }/**
      * {@inheritdoc}
      */

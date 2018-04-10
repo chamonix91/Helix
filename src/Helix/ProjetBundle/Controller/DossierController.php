@@ -21,9 +21,12 @@ class DossierController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findAll();
+        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('etat'=> 1));
+
+        $best = $em->getRepository('HelixProjetBundle:Dossier')->findby(array(),array('note'=>'desc'));
 
         return $this->render('@HelixProjet/Dossier/index.html.twig', array(
+            'best'=> $best,
             'dossiers' => $dossiers,
         ));
     }
@@ -46,6 +49,19 @@ class DossierController extends Controller
 
 
         return $this->redirect($this->generateUrl('dossier_show', array('id' => $entity->getId())));
+    }
+
+    public function recommandeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $dossier = $em->getRepository('HelixProjetBundle:Dossier')->getRecommande();
+
+
+
+
+        return $this->render('@HelixProjet/Dossier/recommande.html.twig', array(
+            'dossiers' => $dossier,
+        ));
     }
 
     /**
@@ -142,6 +158,16 @@ class DossierController extends Controller
         ));
     }
 
+    public function allprojectsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findAll();
+        return $this->render('@HelixProjet/Dossier/allprojects.html.twig', array(
+            'dossiers' => $dossiers,
+        ));
+    }
+
     /**
      * Displays a form to edit an existing dossier entity.
      *
@@ -179,6 +205,23 @@ class DossierController extends Controller
 
 
         return $this->redirect($this->generateUrl('dossier_index'));
+    }
+
+
+    public function approbationAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $dossier = $em->getRepository('HelixProjetBundle:Dossier')->find($id);
+
+        if (!$dossier) {
+            throw $this->createNotFoundException('Impossible de trouver ce dossier.');
+        }
+
+        $dossier->setEtat(1);
+        $em->flush();
+
+
+        return $this->redirect($this->generateUrl('allprojects'));
     }
 
     /**

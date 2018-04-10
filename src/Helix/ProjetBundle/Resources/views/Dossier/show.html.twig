@@ -15,10 +15,10 @@
             <div class="container">
                 <div class="cover-buttons">
                     <ul>
-                        <li><div class="buttons medium button-plain "><i class="fa fa-phone"></i></div></li>
-                        <li><div class="buttons medium button-plain "><i class="fa fa-envelope"></i>{{ user.email }}</div></li>
+                        {#<li><div class="buttons medium button-plain "><i class="fa fa-phone"></i></div></li>#}
+                        <li><div class="buttons medium button-plain "><i class="fa fa-envelope"></i>{{ user.username }}</div></li>
                         <li><div class="inside-rating buttons listing-rating theme-btn button-plain"><span class="value">+ {{ dossier.note }}</span> <sup class="out-of"></sup></div></li>
-                        <li><a href="#add-review" class="buttons btn-outlined medium add-review"><i class="fa fa-comments-o"></i><span class="hidden-xs">contacter</span></a></li>
+                        <li><a href="{{ path('fos_message_thread_new') }}" class="buttons btn-outlined medium add-review"><i class="fa fa-comments-o"></i><span class="hidden-xs">contacter</span></a></li>
                         <li><a href="{{ path('dossier_note', {'id': dossier.id}) }}" data-listing-id="74" data-nonce="01a769d424" class="buttons btn-outlined"><i class="fa fa-heart-o"></i><span class="hidden-xs">Recommander</span> </a></li>
                     </ul>
                 </div>
@@ -61,7 +61,7 @@
                                         2726 Shinn Street, New York
                                     </a>#}
 
-                                    <div class="rating-box">
+                                   {# <div class="rating-box">
                                         <div class="detail-list-rating">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -70,7 +70,7 @@
                                             <i class="fa fa-star"></i>
                                         </div>
                                         <a href="#" class="detail-rating-count">47 Rating</a>
-                                    </div>
+                                    </div>#}
                                 </div>
                             </div>
                         </div>
@@ -501,18 +501,52 @@
                     <div class="active package-box">
                         <div class="package-header">
                             <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                            <h3>Standard</h3>
+                            <h3>{{ pack1.nom }}</h3>
                         </div>
                         <div class="package-price">
-                            <h2><sup>$ </sup>110<sub>/Month</sub></h2>
+                            <h2>{{ pack1.prix }}<sup>Dt </sup></h2>
                         </div>
                         <div class="package-info">
                             <ul>
-                                <li>3 Designs</li>
-                                <li>3 PSD Designs</li>
-                                <li>4 color Option</li>
-                                <li>10GB Disk Space</li>
-                                <li>Full Support</li>
+                                {% if pack1.offre1 %}
+                                    <li>{{ pack1.offre1 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre2 %}
+                                    <li>{{ pack1.offre2 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre3 %}
+                                    <li>{{ pack1.offre3 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre4 %}
+                                    <li>{{ pack1.offre4 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre5 %}
+                                    <li>{{ pack1.offre5 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre6 %}
+                                    <li>{{ pack1.offre6 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre7 %}
+                                    <li>{{ pack1.offre7 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre8 %}
+                                    <li>{{ pack1.offre8 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre9 %}
+                                    <li>{{ pack1.offre9 }}</li>
+                                {% endif %}
+
+                                {% if pack1.offre10 %}
+                                    <li>{{ pack1.offre10 }}</li>
+                                {% endif %}
                             </ul>
                         </div>
                         <button type="submit" class="btn btn-package">Sign Up</button>

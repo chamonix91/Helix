@@ -7,6 +7,7 @@ namespace Helix\UserBundle\Form;
 use Helix\UserBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -36,6 +37,8 @@ class RegistrationType extends AbstractType
                 'second_options' => array('label' => ' '),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
+
+
         ;
     }
 

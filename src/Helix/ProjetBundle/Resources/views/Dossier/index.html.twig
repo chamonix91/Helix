@@ -19,20 +19,16 @@
                     <h3 class="text-center">Chercher un projet</h3>
                     <form class="form-verticle">
                         <div class="col-md-4 col-sm-4 no-padd">
-                            <input type="text" class="form-control left-radius" placeholder="Keywords..">
+
                         </div>
                         <div class="col-md-3 col-sm-3 no-padd">
-                            <input type="text" class="form-control" placeholder="Location..">
+                            <input type="text" class="form-control left-radius" placeholder="Mots clés..">
                         </div>
                         <div class="col-md-3 col-sm-3 no-padd">
-                            <select class="selectpicker form-control" data-live-search="true">
-                                <option data-tokens="ketchup mustard">Choose Category</option>
-                                <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                <option data-tokens="frosting">Sugar, Spice and all things nice</option>
-                            </select>
+                            <button type="button" class="btn theme-btn normal-height full-width">Chercher</button>
                         </div>
                         <div class="col-md-2 col-sm-2 no-padd">
-                            <button type="button" class="btn theme-btn normal-height full-width">Search</button>
+
                         </div>
                     </form>
                 </div>
@@ -50,7 +46,7 @@
                         <!-- Start: Search By Price -->
                         <div class="widget-boxed">
                             <div class="widget-boxed-header">
-                                <h4><i class="ti-money padd-r-10"></i>Top Categories</h4>
+                                <h4><i class="fa fa-search"></i> Filtrer par</h4>
                             </div>
                             <div class="widget-boxed-body padd-top-10 padd-bot-0">
                                 <div class="side-list">
@@ -59,37 +55,74 @@
 													<span class="custom-checkbox d-block">
 														<input type="checkbox" id="free">
 														<label for="free"></label>
-														Free Listing
+														Alcool permis
 													</span>
                                         </li>
                                         <li>
 													<span class="custom-checkbox d-block">
-														<input type="checkbox" id="regular">
-														<label for="regular"></label>
-														Regular $40 - $100
+														<input type="checkbox" id="free">
+														<label for="free"></label>
+														Ayant un partenariat
 													</span>
                                         </li>
                                         <li>
 													<span class="custom-checkbox d-block">
-														<input type="checkbox" id="premium">
-														<label for="premium"></label>
-														Premium $120 - $200
+
+														<select class="selectpicker form-control" >
+                                          <option value="" disabled selected>Choisir un gouvernorat</option>
+										  <option data-tokens="ketchup mustard">Ariana</option>
+										  <option data-tokens="ketchup mustard">Béja</option>
+										  <option data-tokens="ketchup mustard">Ben Arous</option>
+										  <option data-tokens="ketchup mustard">Bizerte</option>
+										  <option data-tokens="ketchup mustard">Gabès</option>
+										  <option data-tokens="ketchup mustard">Gafsa</option>
+										  <option data-tokens="ketchup mustard">Jendouba</option>
+										  <option data-tokens="ketchup mustard">Kairouan</option>
+										  <option data-tokens="ketchup mustard">Kasserine</option>
+										  <option data-tokens="ketchup mustard">Kébili</option>
+										  <option data-tokens="ketchup mustard">Le Kef</option>
+										  <option data-tokens="ketchup mustard">Mahdia</option>
+										  <option data-tokens="ketchup mustard">La Manouba</option>
+										  <option data-tokens="ketchup mustard">Médenine</option>
+										  <option data-tokens="ketchup mustard">Monastir</option>
+										  <option data-tokens="ketchup mustard">Nabeul</option>
+										  <option data-tokens="ketchup mustard">Sfax</option>
+										  <option data-tokens="ketchup mustard">Sidi Bouzid</option>
+										  <option data-tokens="ketchup mustard">Siliana</option>
+										  <option data-tokens="ketchup mustard">Sousse</option>
+										  <option data-tokens="ketchup mustard">Tataouine</option>
+										  <option data-tokens="ketchup mustard">Tozeur</option>
+										  <option data-tokens="ketchup mustard">Tunis</option>
+										  <option data-tokens="ketchup mustard">Zaghouan</option>
+
+										</select>
+
 													</span>
                                         </li>
                                         <li>
 													<span class="custom-checkbox d-block">
-														<input type="checkbox" id="standard">
-														<label for="standard"></label>
-														Standard $200 - $500
-													</span>
+														<select class="selectpicker form-control" >
+                                          <option value="" disabled selected>Choisir un thème</option>
+                                          <option data-tokens="ketchup mustard">Business</option>
+                                          <option data-tokens="ketchup mustard">Humanitaire</option>
+                                          <option data-tokens="ketchup mustard">Culturel</option>
+
+
+
+										</select>
                                         </li>
                                         <li>
-													<span class="custom-checkbox d-block">
-														<input type="checkbox" id="platinum">
-														<label for="platinum"></label>
-														Platinum $1000 - $10,000
+														<select class="selectpicker form-control" >
+                                          <option value="" disabled selected>Choisir une tranche d'âge</option>
+                                          <option data-tokens="ketchup mustard">[-18]</option>
+                                          <option data-tokens="ketchup mustard">[18-25 ans]</option>
+                                          <option data-tokens="ketchup mustard">[25-35 ans]</option>
+                                          <option data-tokens="ketchup mustard">[35+]</option>
+                                          <option data-tokens="ketchup mustard">Tous le monde</option>
+										</select>
 													</span>
                                         </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -99,66 +132,32 @@
                         <!-- Start: Latest Listing -->
                         <div class="widget-boxed">
                             <div class="widget-boxed-header">
-                                <h4><i class="ti-check-box padd-r-10"></i>Latest Listing</h4>
+                                <h4><i class="ti-check-box padd-r-10"></i>Projets recommandés</h4>
                             </div>
                             <div class="widget-boxed-body padd-top-5">
                                 <div class="side-list">
                                     <ul class="listing-list">
+                                        {% set x = 1  %}
+                                        {% for b in best %}
+                                        {% if x < 6 %}
+
                                         <li>
-                                            <a href="listing-detail.html">
+                                            <a href="{{ path('dossier_show', {'id': b.id}) }}">
                                                 <div class="listing-list-img">
-                                                    <img src="assets/img/image-3.jpg" class="img-responsive" alt="">
+                                                    <img src="{{ asset('assets/img/image-5.jpg') }}" class="img-responsive" alt="">
                                                 </div>
                                             </a>
                                             <div class="listing-list-info">
-                                                <h5><a href="#" title="Listing">Freel Documentry</a></h5>
+                                                <h5><a href="{{ path('dossier_show', {'id': b.id}) }}" title="Listing">{{ b.nom }}</a></h5>
                                                 <div class="listing-post-meta">
-                                                    <span class="updated">Nov 26, 2017</span> | <a href="#" rel="tag">Documentry</a>
+                                                    {% if b.note == 0 %}Pas de recommandations{% else %}<span class="updated">Nombre de recommandations</span> : <a href="#" rel="tag">{{ b.note }}</a>{% endif %}
                                                 </div>
                                             </div>
                                         </li>
 
-                                        <li>
-                                            <a href="listing-detail.html">
-                                                <div class="listing-list-img">
-                                                    <img src="assets/img/image-4.jpg" class="img-responsive" alt="">
-                                                </div>
-                                            </a>
-                                            <div class="listing-list-info">
-                                                <h5><a href="#" title="Listing">Preez Food Rock</a></h5>
-                                                <div class="listing-post-meta">
-                                                    <span class="updated">Oct 10, 2017</span> | <a href="#" rel="tag">Food</a>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <a href="listing-detail.html">
-                                                <div class="listing-list-img">
-                                                    <img src="assets/img/image-1.jpg" class="img-responsive" alt="">
-                                                </div>
-                                            </a>
-                                            <div class="listing-list-info">
-                                                <h5><a href="#" title="Listing">Cricket Buzz High</a></h5>
-                                                <div class="listing-post-meta">
-                                                    <span class="updated">Oct 07, 2017</span> | <a href="#" rel="tag">Sport</a>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <a href="listing-detail.html">
-                                                <div class="listing-list-img">
-                                                    <img src="assets/img/image-5.jpg" class="img-responsive" alt="">
-                                                </div>
-                                            </a>
-                                            <div class="listing-list-info">
-                                                <h5><a href="#" title="Listing">Tour travel Tick</a></h5>
-                                                <div class="listing-post-meta">
-                                                    <span class="updated">Sep 27, 2017</span> | <a href="#" rel="tag">Travel</a>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            {% set x = x + 1 %}
+                                        {% endif %}
+                                        {% endfor %}
 
                                     </ul>
                                 </div>
@@ -166,34 +165,14 @@
                         </div>
                         <!-- End: Latest Listing -->
 
-                        <!-- Start: Listing Category -->
-                        <div class="widget-boxed">
-                            <div class="widget-boxed-header">
-                                <h4><i class="ti-briefcase padd-r-10"></i>Top Categories</h4>
-                            </div>
-                            <div class="widget-boxed-body padd-top-10 padd-bot-0">
-                                <div class="side-list">
-                                    <ul class="category-list">
-                                        <li><a href="#">Business <span class="badge bg-g">4</span></a></li>
-                                        <li><a href="#">Shopping <span class="badge bg-a">7</span></a></li>
-                                        <li><a href="#">Photography <span class="badge bg-d">10</span></a></li>
-                                        <li><a href="#">Intertainment <span class="badge bg-l">55</span></a></li>
-                                        <li><a href="#">Education <span class="badge bg-o">8</span></a></li>
-                                        <li><a href="#">Travel & Tour <span class="badge bg-y">17</span></a></li>
-                                        <li><a href="#">Health & Fitness <span class="badge bg-s">9</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End: Listing Category -->
 
                         <!-- Start: Help & Support -->
                         <div class="widget-boxed">
                             <div class="widget-boxed-body padd-top-40 padd-bot-40 text-center">
                                 <div class="help-support">
                                     <i class="ti-headphone-alt font-60 theme-cl mrg-bot-15"></i>
-                                    <p>Have Any Question? Mail Us</p>
-                                    <h4 class="mrg-top-0">Hello@listinghub.com</h4>
+                                    <p>Avez-vous des questions ? Contactez-nous</p>
+                                    <h4 class="mrg-top-0">Contact@Helix.com</h4>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +184,7 @@
                 <!-- Start All Listing -->
                 <div class="col-md-8 col-sm-12">
                     <!-- Filter option -->
-                    <div class="row mrg-0 mrg-bot-20">
+                    {#<div class="row mrg-0 mrg-bot-20">
                         <div class="col-md-6">
                             <h5>Short By</h5>
                         </div>
@@ -215,22 +194,24 @@
                                 <a href="#" title="List Layout"><i class="ti-view-list"></i></a>
                             </div>
                         </div>
-                    </div>
+                    </div>#}
                     <!-- End Filter option -->
 
                     <div class="row mrg-0">
                         {% for dossier in dossiers %}
                         <div class="col-md-4 col-sm-6">
+                            {% if dossier.note > 0 %}
+                            <span class="featured-listing"></span>
+                            {% endif %}
                             <div class="listing-shot grid-style">
-                                <div class="listing-badge now-open">Now Open</div>
-                                <a href="listing-detail.html">
+                                <a href="{{ path('dossier_show', {'id': dossier.id}) }}">
                                     <div class="listing-shot-img">
-                                        <img src="assets/img/category/art.jpg" class="img-responsive" alt="">
+                                        <img src="{{ asset('assets/img/building-icon.png') }}" class="img-responsive" alt="">
                                         <span class="approve-listing"><i class="fa fa-check"></i></span>
                                     </div>
                                     <div class="listing-shot-caption">
-                                        <h4>Art & Design</h4>
-                                        <p class="listing-location">Bishop Avenue, New York</p>
+                                        <h4>{{ dossier.nom }}</h4>
+                                        <p class="listing-location">Partenaire(s): {{ dossier.partenaire }}</p>
                                         <span class="like-listing style-2"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
@@ -238,26 +219,13 @@
                                     <div class="row extra">
                                         <div class="col-md-12">
                                             <div class="listing-detail-info">
-                                                <span><i class="fa fa-phone" aria-hidden="true"></i> 807-502-5867</span>
-                                                <span><i class="fa fa-globe" aria-hidden="true"></i> www.mysitelink.com</span>
+                                                <span><i class="fa fa-phone" aria-hidden="true"></i> </span>
+                                                <span><i class="fa fa-envelope" aria-hidden="true"></i>{{ dossier.idUser.email }}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="listing-shot-info rating">
-                                    <div class="row extra">
-                                        <div class="col-md-7 col-sm-7 col-xs-6">
-                                            <i class="color fa fa-star" aria-hidden="true"></i>
-                                            <i class="color fa fa-star" aria-hidden="true"></i>
-                                            <i class="color fa fa-star" aria-hidden="true"></i>
-                                            <i class="color fa fa-star-half-o" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
-                                            <a href="#" class="detail-link">Open Now</a>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                         {% endfor %}
@@ -273,10 +241,7 @@
                         <ul class="pagination">
                             <li><a href="#">&laquo;</a></li>
                             <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
+
                             <li><a href="#">&raquo;</a></li>
                         </ul>
                     </div>

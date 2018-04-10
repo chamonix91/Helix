@@ -31,3 +31,16 @@ dossier_deletelink:
 dossier_note:
     path:     /{id}/note
     defaults: { _controller: HelixProjetBundle:Dossier:note  }
+
+allprojects:
+    path:     /allprojects
+    defaults: { _controller: HelixProjetBundle:Dossier:allprojects  }
+
+approbation:
+    path:     /{id}/approbation
+    defaults: { _controller: HelixProjetBundle:Dossier:approbation  }
+
+recommande:
+    path:     /recommande
+    defaults: { _controller: HelixProjetBundle:Dossier:recommande  }
+

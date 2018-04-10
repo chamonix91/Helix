@@ -1,0 +1,114 @@
+{% extends '@HelixFront/Template/Layout.html.twig' %}
+
+{% block title %}Projets Recommandés | Helix{% endblock title %}
+
+{% block pagetitle %} Projets Recommandés  {% endblock %}
+{% block pageracine %} Accueil {% endblock %}
+{% block pageactuelle %} Projets Recommandés {% endblock %}
+
+{% block container %}
+
+    <!-- ================ Search Bar Style ======================= -->
+    <section class="padd-top-0 padd-bot-0">
+        <div class="container">
+            <div class="row">
+                <div class="white-box white-shadow padd-top-30 padd-bot-30 translateY-60">
+                    <h3 class="text-center">Chercher un projet</h3>
+                    <form class="form-verticle">
+                        <div class="col-md-4 col-sm-4 no-padd">
+
+                        </div>
+                        <div class="col-md-3 col-sm-3 no-padd">
+                            <input type="text" class="form-control left-radius" placeholder="Mots clés..">
+                        </div>
+                        <div class="col-md-3 col-sm-3 no-padd">
+                            <button type="button" class="btn theme-btn normal-height full-width">Chercher</button>
+                        </div>
+                        <div class="col-md-2 col-sm-2 no-padd">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ================ End Search Bar Style ======================= -->
+
+    <!-- ================ Full Width Grid Style ======================= -->
+    <section class="padd-top-20">
+        <div class="container">
+            <div class="row mrg-bot-20">
+                <div class="col-md-6">
+                    <h5>Short By</h5>
+                </div>
+                <div class="col-md-6">
+                    <div class="layout-option pull-right">
+                        <a href="#" class="active" title="Grid Layout"><i class="ti-layout-grid3"></i></a>
+                        <a href="#" title="List Layout"><i class="ti-view-list"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for dossier in dossiers %}
+                <div class="col-md-4 col-sm-6">
+                    <div class="listing-shot grid-style">
+                        <span class="featured-listing"></span>
+                        <a href="{{ path('dossier_show', {'id': dossier.id}) }}">
+                            <div class="listing-shot-img">
+                                <img src="{{ asset('assets/img/building-icon.png') }}" class="img-responsive" alt="">
+                                <span class="approve-listing"><i class="fa fa-check"></i></span>
+                            </div>
+                            <div class="listing-shot-caption">
+                                <h4>{{ dossier.nom }}</h4>
+                                <p class="listing-location">Bishop Avenue, New York</p>
+                                <span class="like-listing style-2"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                            </div>
+                        </a>
+                        <div class="listing-shot-info">
+                            <div class="row extra">
+                                <div class="col-md-12">
+                                    <div class="listing-detail-info">
+                                        <span><i class="fa fa-phone" aria-hidden="true"></i> 807-502-5867</span>
+                                        <span><i class="fa fa-globe" aria-hidden="true"></i> {{ dossier.idUser.email }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="listing-shot-info rating">
+                            <div class="row extra">
+                                <div class="col-md-7 col-sm-7 col-xs-6">
+                                    <i class="color fa fa-star" aria-hidden="true"></i>
+                                    <i class="color fa fa-star" aria-hidden="true"></i>
+                                    <i class="color fa fa-star" aria-hidden="true"></i>
+                                    <i class="color fa fa-star-half-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </div>
+                                <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
+                                    <a href="listing-detail.html" class="detail-link">Open Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endfor %}
+
+            </div>
+            <!-- Start Pagination -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bs-example">
+                        <ul class="pagination">
+                            <li><a href="#">&laquo;</a></li>
+                            <li><a href="#">1</a></li>
+
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End Pagination -->
+        </div>
+    </section>
+    <!-- ================ Full Width Grid Style ======================= -->
+
+{% endblock container %}

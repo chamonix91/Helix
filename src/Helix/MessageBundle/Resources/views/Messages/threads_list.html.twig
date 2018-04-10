@@ -1,4 +1,4 @@
-<table>
+<table class="table table-hover">
 
     <thead>
         <tr>
@@ -15,10 +15,10 @@
 
     {% if threads %}
         {% for thread in threads %}
-            <tr>
+            <tr class="table-primary">
                 <td>
                     <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}">
-                        {{ thread.subject }}
+                        <i class="fa fa-reply"></i> {{ thread.subject }}
                     </a>
 
                     {% if not fos_message_is_read(thread) %}
@@ -29,7 +29,7 @@
                     {{ thread.createdBy }}
                 </td>
                 <td>
-                    {{ thread.createdAt|date }}
+                    {{ thread.createdAt|date ('d-m-y h:m') }}
                 </td>
                 <td>
                     {{ thread.messages|length }}
@@ -37,9 +37,10 @@
                 <td>
                     {% if thread.lastMessage %}
                         <a href="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}#message_{{ thread.lastMessage.id }}" title="{% trans from 'FOSMessageBundle' %}goto_last{% endtrans %}">
-                            →
+                            <i class="fa fa-reply"></i>
+
                         </a>
-                        {% trans with {'%date%': thread.lastMessage.createdAt|date} from 'FOSMessageBundle' %}on{% endtrans %}
+                        {% trans with {'%date%': thread.lastMessage.createdAt|date('d-m-y h:m')} from 'FOSMessageBundle' %}on{% endtrans %}
                         <br />
                         {% trans with {'%sender%': thread.lastMessage.sender|e } from 'FOSMessageBundle' %}by{% endtrans %}
                     {% else %}
@@ -56,7 +57,7 @@
                             {% set submitValue %}{% trans from 'FOSMessageBundle' %}delete{% endtrans %}{% endset %}
                         {% endif %}
                         <form action="{{ formAction }}" method="post">
-                                <input type="submit" value="{{ submitValue }}" />
+                                <input class="btn theme-btn" type="submit" value="{{ submitValue }}" />
                         </form>
                     {% endif %}
                 </td>

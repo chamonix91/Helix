@@ -16,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="dossier")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Helix\ProjetBundle\Repository\DossierRepository")
  */
 
 class Dossier
@@ -82,7 +83,7 @@ class Dossier
     /**
      * @ORM\Column(type="integer" ,nullable=true)
      */
-    private $note;
+    private $note = 0;
 
     /**
      * @ORM\Column(type="integer" ,nullable=true)
@@ -91,29 +92,30 @@ class Dossier
 
 
     /**
-     *
-     * @var array
-     *
-     *@ORM\Column(type="array" ,nullable=true)
+     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="idpack", referencedColumnName="id")
+     * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
+     * @Assert\Valid()
      *
      */
     private $pack ;
 
     /**
      *
-     *
-     * @var array
-     *
-     *@ORM\Column(type="array" ,nullable=true)
+     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="idpack2", referencedColumnName="id")
+     * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
+     * @Assert\Valid()
      *
      */
     private $pack2 ;
 
     /**
      *
-     * @var array
-     *
-     * @ORM\Column(type="array" ,nullable=true)
+     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Pack", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="idpack3", referencedColumnName="id")
+     * @Assert\Type(type="Helix\ProjetBundle\Entity\Pack")
+     * @Assert\Valid()
      *
      */
     private $pack3 ;
@@ -127,6 +129,14 @@ class Dossier
      *
      */
     private $iduser;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Preferences", cascade={"persist", "remove"})
+     * @Assert\Type(type="Helix\ProjetBundle\Entity\Preference")
+     * @Assert\Valid()
+     *
+     */
+    private $preference ;
 
 
 
@@ -308,6 +318,22 @@ class Dossier
         $this->note = $note;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @param mixed $etat
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+    }
+
 
 
     /**
@@ -372,6 +398,22 @@ class Dossier
     public function setPack3($pack3)
     {
         $this->pack3 = $pack3;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPreference()
+    {
+        return $this->preference;
+    }
+
+    /**
+     * @param mixed $preference
+     */
+    public function setPreference($preference)
+    {
+        $this->preference = $preference;
     }
 
 

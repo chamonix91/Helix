@@ -21,9 +21,20 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $users = $em->getRepository('HelixUserBundle:User')->findAll();
+        $users = $em->getRepository('HelixUserBundle:User')->findBy(array('enabled'=>'1'));
 
         return $this->render('@HelixUser/user/index.html.twig', array(
+            'users' => $users,
+        ));
+    }
+
+    public function allsponsorsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $users = $em->getRepository('HelixUserBundle:User')->findAll();
+
+        return $this->render('@HelixUser/user/allsponsors.html.twig', array(
             'users' => $users,
         ));
     }
@@ -69,6 +80,7 @@ class UserController extends Controller
             $user->setPassword($password);
             $user->setRoles(array('ROLE_SPONSOR'));
             $user->setEnabled(1);
+            $user->setType("silver");
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -96,21 +108,55 @@ class UserController extends Controller
         ));
     }
 
-    public function bannirAction(User $user)
+    public function bannirAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('HelixUserBundle:User')->find($id);
+        $user = $em->getRepository('HelixUserBundle:User')->find($id);
 
-        if (!$entity) {
+        if (!$user) {
             throw $this->createNotFoundException('Impossible de trouver cet utilisateur.');
         }
 
-        $entity->setEnabled(0);
+        $user->setEnabled(false);
+        $em->flush();
 
 
 
+        return $this->redirect($this->generateUrl('ban'));
+    }
 
-        return $this->redirect($this->generateUrl('dossier_index'));
+    public function toGoldAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('HelixUserBundle:User')->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('Impossible de trouver cet utilisateur.');
+        }
+
+        $user->setType('gold');
+        $em->flush();
+
+
+
+        return $this->redirect($this->generateUrl('allSponsors'));
+    }
+
+    public function toPremiumAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('HelixUserBundle:User')->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('Impossible de trouver cet utilisateur.');
+        }
+
+        $user->setType('premium');
+        $em->flush();
+
+
+
+        return $this->redirect($this->generateUrl('ban'));
     }
 
     /**
@@ -177,10 +223,10 @@ class UserController extends Controller
     public function blockedUserAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('HelixUserBundle:User')->findby(array('enabled'=> 0));
+        $users = $em->getRepository('HelixUserBundle:User')->findby(array('enabled'=> '0'));
 
 
-        return $this->render('@HelixUser/user/index.html.twig', array(
+        return $this->render('@HelixUser/user/ban.html.twig', array(
             'users' => $users,
         ));
 

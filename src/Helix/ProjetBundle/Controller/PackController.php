@@ -43,7 +43,7 @@ class PackController extends Controller
         $form->handleRequest($request);
         $user= $this->getUser();
         $iduser= $user->getId();
-        $dossier = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('idUser'=>$iduser));
+        //$dossier = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('idUser'=>$iduser));
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
