@@ -54,83 +54,29 @@
                             <div class="widget-boxed-body padd-top-10 padd-bot-0">
                                 <div class="side-list">
                                     <ul class="price-range">
+
                                         <li>
-													<span class="custom-checkbox d-block">
-														<input type="checkbox" id="free">
-														<label for="free"></label>
-														Alcool permis
-													</span>
+                                            {{ form_widget(form.alcool, { 'attr': {'class': "form-control"} }) }}
                                         </li>
                                         <li>
-													<span class="custom-checkbox d-block">
-														<input type="checkbox" id="free">
-														<label for="free"></label>
-														Ayant un partenariat
-													</span>
+                                            {{ form_widget(form.withPartner, { 'attr': {'class': "form-control"} }) }}
                                         </li>
                                         <li>
-													<span class="custom-checkbox d-block">
+                                            {{ form_widget(form.gouvernorat, { 'attr': {'class': "form-control"} }) }}
 
-														<select class="form-control" >
-                                          <option value="" disabled selected>Choisir un gouvernorat</option>
-										  <option data-tokens="ketchup mustard">Ariana</option>
-										  <option data-tokens="ketchup mustard">Béja</option>
-										  <option data-tokens="ketchup mustard">Ben Arous</option>
-										  <option data-tokens="ketchup mustard">Bizerte</option>
-										  <option data-tokens="ketchup mustard">Gabès</option>
-										  <option data-tokens="ketchup mustard">Gafsa</option>
-										  <option data-tokens="ketchup mustard">Jendouba</option>
-										  <option data-tokens="ketchup mustard">Kairouan</option>
-										  <option data-tokens="ketchup mustard">Kasserine</option>
-										  <option data-tokens="ketchup mustard">Kébili</option>
-										  <option data-tokens="ketchup mustard">Le Kef</option>
-										  <option data-tokens="ketchup mustard">Mahdia</option>
-										  <option data-tokens="ketchup mustard">La Manouba</option>
-										  <option data-tokens="ketchup mustard">Médenine</option>
-										  <option data-tokens="ketchup mustard">Monastir</option>
-										  <option data-tokens="ketchup mustard">Nabeul</option>
-										  <option data-tokens="ketchup mustard">Sfax</option>
-										  <option data-tokens="ketchup mustard">Sidi Bouzid</option>
-										  <option data-tokens="ketchup mustard">Siliana</option>
-										  <option data-tokens="ketchup mustard">Sousse</option>
-										  <option data-tokens="ketchup mustard">Tataouine</option>
-										  <option data-tokens="ketchup mustard">Tozeur</option>
-										  <option data-tokens="ketchup mustard">Tunis</option>
-										  <option data-tokens="ketchup mustard">Zaghouan</option>
-
-										</select>
-
-													</span>
                                         </li>
                                         <li>
-													<span class="custom-checkbox d-block">
-														<select class="form-control" >
-                                          <option value="" disabled selected>Choisir un thème</option>
-                                          <option data-tokens="ketchup mustard">Business</option>
-                                          <option data-tokens="ketchup mustard">Humanitaire</option>
-                                          <option data-tokens="ketchup mustard">Culturel</option>
+                                            {{ form_widget(form.theme, { 'attr': {'class': "form-control"} }) }}
 
-
-
-										</select>
-                                                    </span>
                                         </li>
                                         <li>
-                                            <span class="custom-checkbox d-block">
-														<select class="form-control" >
-                                          <option value="" disabled selected>Choisir une tranche d'âge</option>
-                                          <option data-tokens="ketchup mustard">[-18]</option>
-                                          <option data-tokens="ketchup mustard">[18-25 ans]</option>
-                                          <option data-tokens="ketchup mustard">[25-35 ans]</option>
-                                          <option data-tokens="ketchup mustard">[35+]</option>
-                                          <option data-tokens="ketchup mustard">Tous le monde</option>
-										</select>
-													</span>
+                                            {{ form_widget(form.age, { 'attr': {'class': "form-control"} }) }}
+
                                         </li>
 
                                     </ul>
                                 </div>
-                                {{ form_widget(form) }}
+
                                 <input type="submit" class="btn btn-primary" />
 
                                 {{ form_end(form) }}

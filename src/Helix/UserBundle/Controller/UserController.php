@@ -154,6 +154,17 @@ class UserController extends Controller
         $user->setType('gold');
         $em->flush();
 
+        $preference = new Preferences();
+        $preference->setGouvernorat('all');
+        $preference->setAge('all');
+        $preference->setAlcool('all');
+        $preference->setTheme('all');
+        $preference->setWithPartner('all');
+        $preference->setIduser($user->getId());
+        $em->persist($preference);
+        $em->flush();
+
+
 
 
         return $this->redirect($this->generateUrl('allSponsors'));
