@@ -9,6 +9,7 @@
 namespace Helix\ProjetBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,12 +20,22 @@ class PreferenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('alcool')
-            ->add('gouvernorat')
-            ->add('theme')
-            ->add('age')
-            ->add('withPartner');
-
+            ->add('alcool', ChoiceType::class, array(
+                'choices' => array('Oui' => 'oui', 'non' => 'non'),
+            ))
+            ->add('gouvernorat', ChoiceType::class, array(
+                'choices' => array('In Stock' => true, 'Out of Stock' => false),
+            ))
+            ->add('theme', ChoiceType::class, array(
+                'choices' => array('In Stock' => true, 'Out of Stock' => false),
+            ))
+            ->add('age', ChoiceType::class, array(
+                'choices'
+                => array('In Stock' => true, 'Out of Stock' => false),
+            ))
+            ->add('withPartner', ChoiceType::class, array(
+                'choices' => array('Oui' => 'oui', 'non' => 'non'),
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

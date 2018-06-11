@@ -52,8 +52,10 @@
                     <span class="text-ellipsis"></span>
                 </td>
                 <td align="center">
-                    <a href="{{ path('ban_user', {'id': user.id}) }}"><i class="fa fa-lock"></i></a>
-                    <span class="text-ellipsis"></span>
+                    {% if  user.type == 'free' %}
+                        <a type="button" class="btn btn-success" href="{{ path('toPremium', {'id': user.id }) }}">To Premium </a>
+
+                    {% endif %}                    <span class="text-ellipsis"></span>
                 </td>
             </tr>
         {% endfor %}

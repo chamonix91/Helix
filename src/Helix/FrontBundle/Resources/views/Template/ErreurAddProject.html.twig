@@ -1,0 +1,16 @@
+{% extends 'HelixFrontBundle:Template:Layout.html.twig' %}
+
+{% block title %}Ajout dossier | Helix{% endblock title %}
+
+{% block pagetitle %} Ajouter un projet{% endblock %}
+{% block pageracine %} Accueil {% endblock %}
+{% block pageactuelle %} Ajout projet {% endblock %}
+
+{% block container %}
+    <br><br><br><br><br><br><br><br><br>
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <center><strong>Désolé!</strong> Vous devez avoir un compte premium pour ajouter jusqu'à 5 projets à la fois.</center>
+    </div>
+    <br><br><br><br><br><br><br><br><br>
+{% endblock %}

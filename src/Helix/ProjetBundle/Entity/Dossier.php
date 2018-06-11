@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="dossier")
  * @ORM\Entity
  * @ORM\Entity(repositoryClass="Helix\ProjetBundle\Repository\DossierRepository")
+ *
  */
 
 class Dossier
@@ -88,7 +89,12 @@ class Dossier
     /**
      * @ORM\Column(type="integer" ,nullable=true)
      */
-    private $etat;
+    private $etat= 0;
+
+    /**
+     * @ORM\Column(type="integer" ,nullable=true)
+     */
+    private $block = 1;
 
 
     /**
@@ -131,12 +137,29 @@ class Dossier
     private $iduser;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Preferences", cascade={"persist", "remove"})
-     * @Assert\Type(type="Helix\ProjetBundle\Entity\Preference")
-     * @Assert\Valid()
-     *
+     * @ORM\Column(type="string" ,nullable=true)
      */
-    private $preference ;
+    private $alcool;
+
+    /**
+     * @ORM\Column(type="string" ,nullable=true)
+     */
+    private $gouvernorat;
+
+    /**
+     * @ORM\Column(type="string" ,nullable=true)
+     */
+    private $theme;
+    /**
+     * @ORM\Column(type="string" ,nullable=true)
+     */
+    private $age;
+    /**
+     * @ORM\Column(type="string" ,nullable=true)
+     */
+    private $withPartner;
+
+
 
 
 
@@ -403,17 +426,97 @@ class Dossier
     /**
      * @return mixed
      */
-    public function getPreference()
+    public function getAlcool()
     {
-        return $this->preference;
+        return $this->alcool;
     }
 
     /**
-     * @param mixed $preference
+     * @param mixed $alcool
      */
-    public function setPreference($preference)
+    public function setAlcool($alcool)
     {
-        $this->preference = $preference;
+        $this->alcool = $alcool;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGouvernorat()
+    {
+        return $this->gouvernorat;
+    }
+
+    /**
+     * @param mixed $gouvernorat
+     */
+    public function setGouvernorat($gouvernorat)
+    {
+        $this->gouvernorat = $gouvernorat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * @param mixed $theme
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param mixed $age
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWithPartner()
+    {
+        return $this->withPartner;
+    }
+
+    /**
+     * @param mixed $withPartner
+     */
+    public function setWithPartner($withPartner)
+    {
+        $this->withPartner = $withPartner;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBlock()
+    {
+        return $this->block;
+    }
+
+    /**
+     * @param mixed $block
+     */
+    public function setBlock($block)
+    {
+        $this->block = $block;
     }
 
 

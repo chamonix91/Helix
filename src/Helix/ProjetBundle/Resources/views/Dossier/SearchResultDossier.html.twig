@@ -1,0 +1,15 @@
+{% extends '@HelixProjet/Dossier/index.html.twig' %}
+
+{% block container %}
+{% for project in liste_projet %}
+
+    <li><a href="{{ path('dossier_show', {'id': project.id}) }}">{{ project.id }}</a></li>
+
+{% else %}
+
+    <p>Désolé il n'y a, pour le moment, aucune annonce correspondant à votre recherche.</p>
+
+{% endfor %}
+
+
+{% endblock %}

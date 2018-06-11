@@ -33,3 +33,7 @@ fos_user:
 fos_message:
     resource: "@FOSMessageBundle/Resources/config/routing.xml"
     prefix: /messages
+
+mgilet_notifications:
+    resource: "@MgiletNotificationBundle/Controller/"
+    prefix: /notifications

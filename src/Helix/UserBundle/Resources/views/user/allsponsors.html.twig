@@ -4,7 +4,7 @@
     <div class="table-agile-info">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Liste des utilisateurs
+                Liste des Sponsors
             </div>
             <div class="row w3-res-tb">
                 <div class="col-sm-5 m-b-xs">
@@ -34,30 +34,27 @@
                     <tr>
                         <th>Id</th>
                         <th>Nom d'utilisateur</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Nomdocument</th>
-                        <th>Nomlogo</th>
-                        <th>Actions</th>
+                        <th>email</th>
+                        <th>upgrade</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for user in users %}
+                        {% if user %}
 
                         <tr>
                             <td><a href="{{ path('user_show', {'id': user.id}) }}"><i class="fa fa-eye"></i></a></td>
                             <td>{{ user.username }}</td>
-                            <td>{{ user.nom }}</td>
-                            <td>{{ user.prenom }}</td>
-                            <td>{{ user.nomDocument }}</td>
-                            <td>{{ user.nomLogo }}</td>
+                            <td>{{ user.email }}</td>
                             <td align="center">
-                                <a href="{{ path('user_delete', {'id': user.id}) }}"><i class="fa fa-trash"></i></a>
-                                <br>
-                                <a href="{{ path('user_edit', {'id': user.id}) }}"><i class="fa fa-edit"></i></a>
+                                {% if  user.type == 'silver' %}
+                                <a type="button" class="btn btn-success" href="{{ path('toGold', {'id': user.id }) }}">To Gold </a>
+
+                                {% endif %}
                                 <span class="text-ellipsis"></span>
                             </td>
                         </tr>
+                            {% endif %}
                     {% endfor %}
                     </tbody>
                 </table>

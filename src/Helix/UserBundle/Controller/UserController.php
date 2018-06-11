@@ -2,6 +2,7 @@
 
 namespace Helix\UserBundle\Controller;
 
+use Helix\ProjetBundle\Entity\Preferences;
 use Helix\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,10 +33,18 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $users = $em->getRepository('HelixUserBundle:User')->findAll();
+        $sponsors = $em->getRepository('HelixUserBundle:User')->findAll();
+        $reponse[] = array();
+        foreach ($sponsors as $user){
+            if (($user->getType()== 'silver') || ($user->getType()== 'gold')){
+                array_push($reponse,$user);
+            }
+        }
+
 
         return $this->render('@HelixUser/user/allsponsors.html.twig', array(
-            'users' => $users,
+            'reponse' => $reponse,
+            'users' => $reponse,
         ));
     }
 
@@ -72,6 +81,7 @@ class UserController extends Controller
     public function newSponsorAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = new User();
+        $preference= new Preferences();
         $form = $this->createForm('Helix\UserBundle\Form\RegistrationType', $user);
         $form->handleRequest($request);
 
@@ -81,6 +91,13 @@ class UserController extends Controller
             $user->setRoles(array('ROLE_SPONSOR'));
             $user->setEnabled(1);
             $user->setType("silver");
+            $preference->setWithPartner('all');
+            $preference->setTheme('all');
+            $preference->setAlcool('all');
+            $preference->setGouvernorat('all');
+            $preference->setAge('all');
+            $user->setPreference($preference);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
@@ -155,8 +172,8 @@ class UserController extends Controller
         $em->flush();
 
 
+        return $this->redirect($this->generateUrl('user_index'));
 
-        return $this->redirect($this->generateUrl('ban'));
     }
 
     /**
@@ -229,6 +246,30 @@ class UserController extends Controller
         return $this->render('@HelixUser/user/ban.html.twig', array(
             'users' => $users,
         ));
+
+
+    }
+
+    public function unlockUserAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $em->getRepository('HelixUserBundle:User')->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('Impossible de trouver cet utilisateur.');
+        }
+        $user->setEnabled(true);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('user_index'));
+
+
+
+
+
+
+
 
 
     }

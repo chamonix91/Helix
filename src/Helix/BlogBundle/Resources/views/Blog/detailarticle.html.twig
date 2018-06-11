@@ -28,7 +28,7 @@
 
                             <!-- Blog Content -->
                             <div class="full blog-content">
-                                <div class="post-meta">By: <a href="#" class="author theme-cl">Daniel Dax</a> | 10 Comments </div>
+                                {#<div class="post-meta">By: <a href="#" class="author theme-cl">Daniel Dax</a> | 10 Comments </div>#}
                                 <h3>{{ blog.soustitre2 }}</h3>
                                 <div class="blog-text">
                                    <p>{{ blog.contenue1 }}</p>
@@ -51,7 +51,7 @@
                                 <!-- Blog Share Option -->
                                 <div class="row no-mrg">
                                     <div class="blog-footer-social">
-                                        <span>Share <i class="fa fa-share-alt"></i></span>
+                                        <span>Partager <i class="fa fa-share-alt"></i></span>
                                         <ul class="list-inline social">
                                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -69,142 +69,12 @@
                     <!-- /.Article -->
 
                     <!-- User Comments -->
-                    <div class="row no-mrg">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="comments">
-                                <div class="comments-title">
-                                    <h4>Comments (2)</h4>
-                                </div>
 
-                                <!-- Single Comment -->
-                                <div class="single-comment">
-                                    <div class="img-holder">
-                                        <img src="{{ asset('assets/img/user-1.png') }}" class="img-responsive" alt="">
-                                    </div>
-                                    <div class="text-holder">
-                                        <div class="top">
-                                            <div class="name pull-left">
-                                                <h4>Robert Mil</h4>
-                                            </div>
-                                            <div class="rating pull-right">
-                                                <ul>
-                                                    <li><i class="fa fa-star active"></i></li>
-                                                    <li><i class="fa fa-star active"></i></li>
-                                                    <li><i class="fa fa-star active"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                        </div>
-
-                                        <span class="small">Dec 30 2017</span>
-                                    </div>
-                                </div>
-
-                                <!-- Single Comment -->
-                                <div class="single-comment">
-                                    <div class="img-holder">
-                                        <img src="{{ asset('assets/img/user-2.jpg') }}" class="img-responsive" alt="">
-                                    </div>
-                                    <div class="text-holder">
-
-                                        <div class="top">
-                                            <div class="name pull-left">
-                                                <h4>Litha Dax</h4>
-                                            </div>
-                                            <div class="rating pull-right">
-                                                <ul>
-                                                    <li><i class="fa fa-star active"></i></li>
-                                                    <li><i class="fa fa-star active"></i></li>
-                                                    <li><i class="fa fa-star active"></i></li>
-                                                    <li><i class="fa fa-star active"></i></li>
-                                                    <li><i class="fa fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                        </div>
-                                        <span class="small">Dec 15 2017</span>
-
-                                    </div>
-
-                                    <div class="single-comment">
-                                        <div class="img-holder">
-                                            <img src="{{ asset('assets/img/user-1.png') }}" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="text-holder">
-
-                                            <div class="top">
-                                                <div class="name pull-left">
-                                                    <h4>Robert Mil</h4>
-                                                </div>
-                                                <div class="rating pull-right">
-                                                    <ul>
-                                                        <li><i class="fa fa-star active"></i></li>
-                                                        <li><i class="fa fa-star active"></i></li>
-                                                        <li><i class="fa fa-star active"></i></li>
-                                                        <li><i class="fa fa-star active"></i></li>
-                                                        <li><i class="fa fa-star"></i></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <div class="text">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                            <span class="small">Dec 15 2017</span>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
                     <!-- /.User Comments -->
 
                     <!-- Start Blog Comment -->
                     <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="comments-form">
-                                <div class="section-title2">
-                                    <h4>Leave a Reply</h4>
-                                </div>
 
-                                <form>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Your Name">
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6">
-                                        <input type="email" class="form-control" placeholder="Your Email">
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Your Mobile">
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Subject">
-                                    </div>
-
-                                    <div class="col-md-12 col-sm-12">
-                                        <textarea class="form-control" placeholder="Comment"></textarea>
-                                    </div>
-
-                                    <div class="col-md-12 col-sm-12">
-                                        <button class="btn theme-btn width-200" type="submit">submit now</button>
-                                    </div>
-                                </form>
-                            </div>
-
-                        </div>
                     </div>
                     <!-- End Blog Comment -->
 

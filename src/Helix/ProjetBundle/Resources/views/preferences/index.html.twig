@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Preferences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Alcool</th>
+                <th>Gouvernorat</th>
+                <th>Theme</th>
+                <th>Age</th>
+                <th>Withpartner</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for preference in preferences %}
+            <tr>
+                <td><a href="{{ path('pref_show', { 'id': preference.id }) }}">{{ preference.id }}</a></td>
+                <td>{{ preference.alcool }}</td>
+                <td>{{ preference.gouvernorat }}</td>
+                <td>{{ preference.theme }}</td>
+                <td>{{ preference.age }}</td>
+                <td>{{ preference.withPartner }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pref_show', { 'id': preference.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pref_edit', { 'id': preference.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pref_new') }}">Create a new preference</a>
+        </li>
+    </ul>
+{% endblock %}

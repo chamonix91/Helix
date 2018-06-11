@@ -17,6 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Table(name="utilisateur")
  * @Vich\Uploadable
+ * @ORM\Entity(repositoryClass="Helix\UserBundle\Repository\UserRepository")
+
 
  */
 class User extends BaseUser implements ParticipantInterface
@@ -76,7 +78,7 @@ class User extends BaseUser implements ParticipantInterface
     private $type="silver";
 
     /**
-     * @ORM\ManyToOne(targetEntity="Helix\ProjetBundle\Entity\Preferences", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="Helix\ProjetBundle\Entity\Preferences", cascade={"persist", "remove"})
      * @ORM\JoinColumn(name="preference", referencedColumnName="id")
      * @Assert\Type(type="Helix\ProjetBundle\Entity\Preference")
      * @Assert\Valid()

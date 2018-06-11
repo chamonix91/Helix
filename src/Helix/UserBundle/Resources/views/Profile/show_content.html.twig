@@ -13,23 +13,19 @@
             <div class="add-listing-box translateY-60 edit-info mrg-bot-25 padd-bot-30 padd-top-25">
                 <div class="listing-box-header">
                     <div class="avater-box">
-                        <img src="{{ asset('assets/img/avatar.jpg') }}" class="img-responsive img-circle edit-avater" alt="" />
+                        <img src="{{ asset('assets/img/Logo_TV_2015.png') }}" class="img-responsive img-circle edit-avater" alt="" />
                     </div>
-                    <h3>Daniel M. Dev</h3>
+                    <h3>{{ app.user.username }}</h3>
                     <p>Account Manager</p>
                 </div>
                 <div class="row mrg-r-10 mrg-l-10 preview-info">
+
                     <div class="col-sm-6">
-                        <label><i class="ti-mobile preview-icon call mrg-r-10"></i>91 258 574 5287</label>
+                        <label><i class="ti-email preview-icon email mrg-r-10"></i>{{ app.user.email }}</label>
                     </div>
+
                     <div class="col-sm-6">
-                        <label><i class="ti-email preview-icon email mrg-r-10"></i>support@listinghub@.com</label>
-                    </div>
-                    <div class="col-sm-6">
-                        <label><i class="ti-gift preview-icon birth mrg-r-10"></i>July 17 1990</label>
-                    </div>
-                    <div class="col-sm-6">
-                        <label><i class="ti-world preview-icon web mrg-r-10"></i>Www.listinghub.com</label>
+                        <label><i class="ti-world preview-icon web mrg-r-10"></i></label>
                     </div>
                 </div>
             </div>

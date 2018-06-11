@@ -1,7 +1,7 @@
 dossier_index:
     path:     /
     defaults: { _controller: "HelixProjetBundle:Dossier:index" }
-    methods:  GET
+    methods:  [GET, POST]
 
 dossier_show:
     path:     /{id}/show
@@ -40,7 +40,19 @@ approbation:
     path:     /{id}/approbation
     defaults: { _controller: HelixProjetBundle:Dossier:approbation  }
 
+blockproject:
+    path:     /{id}/blockproject
+    defaults: { _controller: HelixProjetBundle:Dossier:block  }
+
 recommande:
     path:     /recommande
     defaults: { _controller: HelixProjetBundle:Dossier:recommande  }
 
+aApprouver:
+    path:     /aApprouver
+    defaults: { _controller: HelixProjetBundle:Dossier:aApprouver  }
+
+
+searchpage:
+    path:     /search
+    defaults: { _controller: HelixProjetBundle:Dossier:index }

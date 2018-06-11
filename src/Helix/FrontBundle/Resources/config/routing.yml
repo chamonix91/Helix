@@ -6,3 +6,11 @@ index:
 allsponsors:
     path:     /allsponsors
     defaults: { _controller: HelixFrontBundle:Main:allsponsor }
+
+aboutus:
+    path:     /aboutus
+    defaults: { _controller: HelixFrontBundle:Main:about }
+
+erreuraddprojet:
+    path:     /ajoutDossier
+    defaults: { _controller: HelixFrontBundle:Main:erreuraddproject }

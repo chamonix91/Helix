@@ -56,6 +56,14 @@ class Preferences
      */
     private $age;
 
+    /**
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $iduser;
+
+
+
 
 
 
@@ -162,6 +170,22 @@ class Preferences
     public function setWithPartner($withPartner)
     {
         $this->withPartner = $withPartner;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
+    }
+
+    /**
+     * @param mixed $iduser
+     */
+    public function setIduser($iduser)
+    {
+        $this->iduser = $iduser;
     }
 
 

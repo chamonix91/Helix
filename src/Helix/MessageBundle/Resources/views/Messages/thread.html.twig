@@ -7,7 +7,7 @@
 {% for message in thread.messages %}
     <div class="messenger_thread_message">
         <div class="messenger_thread_message_info">
-            {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}
+          <b>  {% trans with {'%sender%': message.sender|e, '%date%': message.createdAt|date} from 'FOSMessageBundle' %}message_info{% endtrans %}</b>
         </div>
 
         <div class="messenger_thread_message_body" id="message_{{ message.id }}">
@@ -18,10 +18,12 @@
 
 <h3>{% trans from 'FOSMessageBundle' %}reply{% endtrans %}</h3>
 
-<form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">
-    {{ form_widget(form) }}
+    {{ form_start(form, {'method': 'post', 'action': path('fos_message_thread_view',{'threadId': thread.id})}) }}
 
-    <input type="submit" />
-</form>
+    {#<form action="{{ url('fos_message_thread_view', {'threadId': thread.id}) }}" method="post">#}
+    {{ form_widget(form.body, { 'attr': {'class': "form-control height-120", 'placeholder': 'Votre message ici...'} }) }}
 
+    <div class="text-center">
+        <button type="submit" class="btn add-field theme-btn">Envoyer</button>
+    </div>{{ form_end(form) }}
 {% endblock %}

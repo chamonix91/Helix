@@ -1,0 +1,67 @@
+{% extends '@HelixFront/Template/Layout.html.twig' %}
+
+{% block title %}Profil | Helix{% endblock title %}
+
+{% block pagetitle %} Modifier Préférences  {% endblock %}
+{% block pageracine %} Accueil {% endblock %}
+{% block pageactuelle %} Modifier Préférences{% endblock %}
+
+{% block container %}
+    <section class="padd-0">
+        <div class="container">
+            <div class="col-md-10 translateY-60 col-sm-12 col-md-offset-1">
+                <!-- General Information -->
+                <div class="add-listing-box edit-info mrg-bot-25 padd-bot-30 padd-top-25">
+                    <div class="listing-box-header">
+                        <div class="avater-box">
+                            {{ form_start(edit_form) }}
+                            <img src="{{ asset('assets/img/avatar-homme.png') }}"
+                                 class="img-responsive img-circle edit-avater" alt=""/>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-sm-6">
+                        <label>Alcool</label>
+                        {{ form_widget(edit_form.alcool, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label>Gouvernorat</label>
+                        {{ form_widget(edit_form.gouvernorat, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label>Thème</label>
+                        {{ form_widget(edit_form.theme, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label>Tranche d'âge</label>
+                        {{ form_widget(edit_form.age, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label>Avec partenaire</label>
+                        {{ form_widget(edit_form.withPartner, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+
+
+                    <div class="row mrg-r-10 mrg-l-10">
+
+
+                </div>
+
+            </div>
+                <div class="text-center">
+                    <button type="submit" class="btn add-field theme-btn">Mettre à jour</button>
+                </div>
+                {{ form_end(edit_form) }}
+        </div>
+    </section>
+
+{% endblock container %}

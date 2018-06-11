@@ -52,3 +52,8 @@ toPremium:
     path:     /{id}/topremium
     defaults: { _controller: "HelixUserBundle:User:toPremium" }
     methods:  [GET, POST]
+
+unlock:
+    path:     /{id}/unlock
+    defaults: { _controller: "HelixUserBundle:User:unlockUser" }
+    methods:  [GET, POST]

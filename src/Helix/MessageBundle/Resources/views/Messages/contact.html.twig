@@ -4,10 +4,10 @@
 
     <h2>Nouveau message à {{ user.username }}</h2>
 
-    <form action="{{ url('fos_message_thread_new') }}" method="post">
-        {{ form_widget(form) }}
+    {{ form_start(form, {'method': 'post', 'action': path('fos_message_thread_new')}) }}
+        {{ form_widget(form, {'method': 'post', 'action': path('fos_message_thread_new')}) }}
 
         <input type="submit" />
-    </form>
+    {{ form_end(form) }}
 
 {% endblock %}

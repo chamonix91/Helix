@@ -27,6 +27,22 @@ class PackController extends Controller
         ));
     }
 
+
+    public function userpackAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getUser();
+        $id = $user->getId();
+        dump($id);die();
+
+        $packs = $em->getRepository('HelixProjetBundle:Pack')->findBy(array('iduser'=>$id));
+        return $this->render('@HelixProjet/Pack/mespacks.html.twig', array(
+            'packs' => $packs,
+        ));
+    }
+
+
     /**
      * Creates a new pack entity.
      *
@@ -114,6 +130,23 @@ class PackController extends Controller
 
         return $this->redirectToRoute('pack_index');
     }
+
+    public function deletelinkAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('HelixProjetBundle:Pack')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Impossible de trouver ce pack.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
+
+        return $this->redirect($this->generateUrl('mespacks'));
+    }
+
 
     /**
      * Creates a form to delete a pack entity.

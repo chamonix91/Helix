@@ -6,10 +6,17 @@ helix_projet_pack:
     resource: "@HelixProjetBundle/Resources/config/routing/pack.yml"
     prefix:   /pack
 
+helix_projet_preferences:
+    resource: "@HelixProjetBundle/Resources/config/routing/preferences.yml"
+    prefix:   /pref
 
 mesdossiers:
     path:     /myprojects
     defaults: { _controller: HelixProjetBundle:Dossier:userdossier }
+
+mespacks:
+    path:     /mypacks
+    defaults: { _controller: HelixProjetBundle:Pack:userpack }
 
 testpack:
     path:     /newpack

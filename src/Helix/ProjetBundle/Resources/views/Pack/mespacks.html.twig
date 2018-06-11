@@ -43,24 +43,22 @@
                     <div class="col-md-12">
                         <div class="small-list-wrapper">
                             <ul>
-                                {% for dossier in dossiers %}
-                                    {% if dossier.block == 1 %}
-                                <li>
-                                    <div class="small-listing-box light-gray">
-                                        <div class="small-list-img">
-                                            <img src="{{ asset('assets/img/image-1.jpg') }}" class="img-responsive" alt="" />
+                                {% for pack in packs %}
+                                    <li>
+                                        <div class="small-listing-box light-gray">
+                                            <div class="small-list-img">
+                                                <img src="{{ asset('assets/img/image-1.jpg') }}" class="img-responsive" alt="" />
+                                            </div>
+                                            <div class="small-list-detail">
+                                                <h4>{{ pack.nom }}</h4>
+                                                <p><a href="#" title="Commence le ">Prix :</a> {{ pack.prix }}</p>
+                                            </div>
+                                            <div class="small-list-action">
+                                                <a href="{{ path('pack_edit', {'id': pack.id}) }}" class="light-gray-btn btn-square" data-placement="top" data-toggle="tooltip" title="Edit Item"><i class="ti-pencil"></i></a>
+                                                <a href="{{ path('pack_deletelink', {'id': pack.id}) }}" class="theme-btn btn-square" data-toggle="tooltip" title="Delete Item"><i class="ti-trash"></i></a>
+                                            </div>
                                         </div>
-                                        <div class="small-list-detail">
-                                            <h4>{{ dossier.nom }}</h4>
-                                            <p><a href="#" title="Commence le ">Commence le</a> | {{ dossier.dateouverture| date('y-m-d') }}</p>
-                                        </div>
-                                        <div class="small-list-action">
-                                            <a href="{{ path('dossier_edit', {'id': dossier.id}) }}" class="light-gray-btn btn-square" data-placement="top" data-toggle="tooltip" title="Edit Item"><i class="ti-pencil"></i></a>
-                                            <a href="{{ path('blockproject', {'id': dossier.id}) }}" class="theme-btn btn-square" data-toggle="tooltip" title="Delete Item"><i class="ti-trash"></i></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                        {% endif %}
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </div>

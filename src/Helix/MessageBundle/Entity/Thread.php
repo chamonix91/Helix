@@ -12,11 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use FOS\MessageBundle\Entity\Thread as BaseThread;
 use FOS\MessageBundle\Entity\ThreadMetadata;
+use Mgilet\NotificationBundle\Annotation\Notifiable;
+use Mgilet\NotificationBundle\NotifiableInterface;
 
 /**
  * @ORM\Entity
+ * @Notifiable(name="thread")
  */
-class Thread extends BaseThread
+
+class Thread extends BaseThread implements NotifiableInterface
 {
     /**
      * @ORM\Id

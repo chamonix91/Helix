@@ -32,8 +32,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <header class="header fixed-top clearfix">
         <!--logo start-->
         <div class="brand">
-            <a href="index.html" class="logo">
-                VISITORS
+            <a href="{{ path('index') }}" class="logo" target="_blank">
+                Helix
             </a>
             <div class="sidebar-toggle-box">
                 <div class="fa fa-bars"></div>
@@ -289,8 +289,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <span>Gestion Dossiers</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{ path('dossier_index') }}">Tous les dossier</a></li>
-                            <li><a href="{{ path('blog_new') }}">Approuver un dossier</a></li>
+                                <li><a href="{{ path('allprojects') }}">Tous les dossier</a></li>
+                            <li><a href="{{ path('aApprouver') }}">Approuver un dossier</a></li>
 
 
                         </ul>
@@ -298,7 +298,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
 
                     <li>
-                        <a href="login.html">
+                        <a href="{{ path('fos_user_security_logout') }}">
                             <i class="fa fa-user"></i>
                             <span>Login Page</span>
                         </a>
@@ -684,6 +684,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             {% endblock content %}
         </section>
+        <br><br><br><br>
         <!-- footer -->
         <div class="footer">
             <div class="wthree-copyright">
