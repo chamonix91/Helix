@@ -14,6 +14,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('App icon blue.png') }}"/>
+
 
     <!-- Bootstrap Select Option css -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap-select.min.css') }}">
@@ -96,14 +98,12 @@
 
                                     <li><a href="{{ path('user_edit', {'id': app.user.id}) }}">Modifier mon Profil</a>
                                     </li>
-
-                                    <li><a href="{{ path('fos_user_profile_show') }}">Mon Profil</a></li>
+                                    <li><a href="{{ path('mespacks') }}">Mes pack</a></li>
 
                                     <li><a href="{{ path('pack_new') }}">Créer un pack</a></li>
 
                                     <li><a href="{{ path('fos_message_inbox') }}">Boite de réception</a></li>
 
-                                    <li><a href="{{ path('pack_new') }}">Créer un pack</a></li>
 
                                     <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                                 </ul>
@@ -132,7 +132,8 @@
                                     <li><a href="{{ path('dossier_index') }}">Toutes les demandes</a></li>
                                     <li><a href="{{ path('recommande') }}">Demandes recommandées</a></li>
                                     {% if app.user.type == 'gold' %}
-                                        <li><a href="{{ path('recommande') }}">Configurer préférences</a></li>
+
+                                        <li><a href="{{ path('pref_edit', {'id': app.user.preference.id}) }}">Configurer préférences</a></li>
                                     {% endif %}
                                     <li><a href="{{ path('fos_message_inbox') }}">Boite de réception</a></li>
                                     <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
@@ -228,35 +229,32 @@
                 <div class="col-md-3 col-sm-12 theme-bg">
                     <div class="footer-widget">
                         <div class="textwidget">
-                            <h3 class="widgettitle widget-title">Get In Touch</h3>
-                            <p>7744 North Park Place<br>
-                                San Francisco, CA 714258</p>
-                            <p><strong>Email:</strong> support@listinghub.com</p>
+                            <h3 class="widgettitle widget-title">Restons en contact</h3>
+                            <p>7744 Adresse helix, rue<br>
+                                cité</p>
+                            <p><strong>Email:</strong> contact@helix.com.tn</p>
                             <p>
-                                <strong>Call:</strong> <a href="tel:+774422777">777-444-2222</a>
+                                <strong>Call:</strong> <a href="tel:+216 xx xxx xxx">+216 xx xxx xxx</a>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5 col-sm-4">
                     <div class="footer-widget">
-                        <h3 class="widgettitle widget-title">About Us</h3>
+                        <h3 class="widgettitle widget-title">Site Map</h3>
                         <ul class="footer-navigation">
-                            <li><a href="#">Home Version 1</a></li>
-                            <li><a href="#">Home Version 2</a></li>
-                            <li><a href="#">Home Version 3</a></li>
-                            <li><a href="#">Home Version 4</a></li>
-                            <li><a href="#">Listing Detail</a></li>
-                            <li><a href="#">Listing Vertical</a></li>
-                            <li><a href="#">Listing Sidebar</a></li>
-                            <li><a href="#">Vertical Sidebar</a></li>
+                            <li><a href="#">Accueil</a></li>
+                            <li><a href="#">Tous les sponsors</a></li>
+                            <li><a href="#">Blog</a></li>
+
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="footer-widget">
-                        <h3 class="widgettitle widget-title">Connect Us</h3>
-                        <img src="{{ asset('assets/img/Helix-Logo-White.png') }}" alt="Footer logo" class="img-responsive" />
+                        <h3 class="widgettitle widget-title">Suivez-nous</h3>
+                        <img src="{{ asset('assets/img/Helix-Logo-White.png') }}" alt="Footer logo"
+                             class="img-responsive"/>
                         <ul class="footer-social">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -269,7 +267,9 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <p>Copyright@ 2017 Listing Hub Design By <a href="http://www.themezhub.com/" title="Themezhub" target="_blank">Themezhub</a></p>
+            <p>Copyright@ 2018 Helix Created By <a href="{{ path('index') }}" title="Helix" target="_blank">Helix
+                    Team</a></p>
+
         </div>
     </footer>
     <!-- ================ End Footer Section ======================= -->

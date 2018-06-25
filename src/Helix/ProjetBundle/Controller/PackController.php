@@ -34,10 +34,22 @@ class PackController extends Controller
 
         $user = $this->getUser();
         $id = $user->getId();
-        dump($id);die();
 
-        $packs = $em->getRepository('HelixProjetBundle:Pack')->findBy(array('iduser'=>$id));
-        return $this->render('@HelixProjet/Pack/mespacks.html.twig', array(
+        $paques = $em->getRepository('HelixProjetBundle:Pack')->findAll();
+
+        $packs[] = array();
+        foreach ($paques as $pack){
+
+            $iduser=$pack->getUser();
+            if ($iduser == $user){
+
+                array_push($packs,$pack);
+            }
+
+        }
+
+
+            return $this->render('@HelixProjet/Pack/mespacks.html.twig', array(
             'packs' => $packs,
         ));
     }
@@ -67,7 +79,7 @@ class PackController extends Controller
             $em->persist($pack);
             $em->flush();
 
-            return $this->redirectToRoute('pack_show', array('id' => $pack->getId()));
+            return $this->redirectToRoute('mespacks');
         }
 
         return $this->render('HelixProjetBundle:Pack:new.html.twig', array(

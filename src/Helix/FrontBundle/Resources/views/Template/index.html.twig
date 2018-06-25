@@ -15,6 +15,8 @@
 
     <title>Helix | Entreprise</title>
 
+    <link rel="shortcut icon" type="image/png" href="{{ asset('App icon blue.png') }}"/>
+
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}">
 
@@ -102,14 +104,12 @@
 
                                     <li><a href="{{ path('user_edit', {'id': app.user.id}) }}">Modifier mon Profil</a>
                                     </li>
-
-                                    <li><a href="{{ path('fos_user_profile_show') }}">Mon Profil</a></li>
+                                    <li><a href="{{ path('mespacks') }}">Mes pack</a></li>
 
                                     <li><a href="{{ path('pack_new') }}">Créer un pack</a></li>
 
                                     <li><a href="{{ path('fos_message_inbox') }}">Boite de réception</a></li>
 
-                                    <li><a href="{{ path('pack_new') }}">Créer un pack</a></li>
 
                                     <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                                 </ul>
@@ -138,7 +138,8 @@
                                     <li><a href="{{ path('dossier_index') }}">Toutes les demandes</a></li>
                                     <li><a href="{{ path('recommande') }}">Demandes recommandées</a></li>
                                     {% if app.user.type == 'gold' %}
-                                        <li><a href="{{ path('recommande') }}">Configurer préférences</a></li>
+
+                                        <li><a href="{{ path('pref_edit', {'id': app.user.preference.id}) }}">Configurer préférences</a></li>
                                     {% endif %}
                                     <li><a href="{{ path('fos_message_inbox') }}">Boite de réception</a></li>
                                     <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
@@ -171,7 +172,7 @@
                     <h1>Découvrez la plateforme <span>Helix</span></h1><br><br>
                     <p></p>
                     <div class="banner-btn">
-                        <a href="contact.html" class="btn contact-btn"><i class="ti-headphone"></i>Contact</a>
+                        <a href="#" class="btn contact-btn"><i class="ti-headphone"></i>Contact</a>
                         <a href="#dest" class="btn listing-btn"><i class="ti-location-pin"></i>Découvrez helix</a>
                     </div>
                     <div class="banner-info">

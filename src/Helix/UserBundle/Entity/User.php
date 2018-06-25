@@ -75,7 +75,7 @@ class User extends BaseUser implements ParticipantInterface
      * @ORM\Column(type="string", nullable= true)
      *
      */
-    private $type="silver";
+    private $type="free";
 
     /**
      * @ORM\OneToOne(targetEntity="Helix\ProjetBundle\Entity\Preferences", cascade={"persist", "remove"})

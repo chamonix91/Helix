@@ -1,15 +1,50 @@
 {% extends '@HelixProjet/Dossier/index.html.twig' %}
 
-{% block container %}
-{% for project in liste_projet %}
+    {% block projects %}
+        <div class="row mrg-0">
+{% for dossier in liste_projet %}
 
-    <li><a href="{{ path('dossier_show', {'id': project.id}) }}">{{ project.id }}</a></li>
+    {% if dossier %}
+        <div class="col-md-4 col-sm-6">
+            {% if dossier.note > 0 %}
+                <span class="featured-listing"></span>
+            {% endif %}
+            <div class="listing-shot grid-style">
+                <a href="{{ path('dossier_show', {'id': dossier.id}) }}">
+                    <div class="listing-shot-img">
+                        <img src="{{ asset('assets/img/building-icon.png') }}"
+                             class="img-responsive" alt="">
+                        <span class="approve-listing"><i class="fa fa-check"></i></span>
+                    </div>
+                    <div class="listing-shot-caption">
+                        <h4>{{ dossier.nom }}</h4>
+                        <p class="listing-location">
+                            Partenaire(s): {{ dossier.partenaire }}</p>
+                        <span class="like-listing style-2"><i class="fa fa-heart-o"
+                                                              aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <div class="listing-shot-info">
+                    <div class="row extra">
+                        <div class="col-md-12">
+                            <div class="listing-detail-info">
+                                <span><i class="fa fa-phone" aria-hidden="true"></i> </span>
+                                <span><i class="fa fa-envelope"
+                                         aria-hidden="true"></i>{{ dossier.idUser.email }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    {% endif %}
 {% else %}
 
     <p>Désolé il n'y a, pour le moment, aucune annonce correspondant à votre recherche.</p>
 
 {% endfor %}
-
+        </div>
 
 {% endblock %}
+

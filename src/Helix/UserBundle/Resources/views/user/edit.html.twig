@@ -7,7 +7,7 @@
 {% block pageactuelle %} Modifier Profil{% endblock %}
 
 {% block container %}
-    <section class="padd-0">
+
     <div class="container">
     <div class="col-md-10 translateY-60 col-sm-12 col-md-offset-1">
     <!-- General Information -->
@@ -61,14 +61,16 @@
 
 
 
-    </div>
 
+
+    </div>
+        <div class="text-center"><button type="submit" class="btn theme-btn">Modifier</button></div>
 
         {{ form_end(edit_form) }}
 
     </div>
 
     </div>
-    </section>
+
 
 {% endblock container %}

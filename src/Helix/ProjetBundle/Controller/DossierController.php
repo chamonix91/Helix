@@ -24,15 +24,53 @@ class DossierController extends Controller
         $form = $this->createForm(preferencesType::class);
         $form->handleRequest($request);
 
-        if($request->getMethod() == 'POST')
 
-        {
+        $em = $this->getDoctrine()->getManager();
+
+        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('etat' => 1));
+
+        $best = $em->getRepository('HelixProjetBundle:Dossier')->findby(array(), array('note' => 'desc'));
+
+
+        $user = $this->getUser();
+
+        if (($user->getType()) == 'gold') {
+            $type = 'gold';
+        } else {
+            $type = 'silver';
+
+        }
+
+
+        $utilisateur = $user->getId();
+
+
+        $preference = $em->getRepository('HelixProjetBundle:Preferences')->findOneBy(array('iduser' => $utilisateur));
+
+        if ($preference) {
+            $withpartner = $preference->getWithPartner();
+            $age = $preference->getAge();
+            $gouvernorat = $preference->getGouvernorat();
+            $alcool = $preference->getAlcool();
+            $theme = $preference->getTheme();
+
+            $reponse[] = array();
+            foreach ($dossiers as $dossier) {
+                if (((($dossier->getWithPartner()) == $withpartner)) && (($dossier->getAge() == $age)) && (($dossier->getGouvernorat() == $gouvernorat)) && (($dossier->getAlcool() == $alcool)) && (($dossier->getTheme() == $theme))) {
+                    array_push($reponse, $dossier);
+                }
+            }
+        } else {
+            $reponse = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('etat' => 1));
+
+
+        }
+
+        if ($request->getMethod() == 'POST') {
             //$form->submit($request);
 
 
-            if($form->isValid())
-
-            {
+            if ($form->isValid()) {
 
                 $em = $this->getDoctrine()->getManager();
                 //On récupère les données entrées dans le formulaire par l'utilisateur
@@ -47,60 +85,21 @@ class DossierController extends Controller
                 //Puis on redirige vers la page de visualisation de cette liste d'annonces
 
 
-                return $this->render('HelixProjetBundle:Dossier:SearchResultDossier.html.twig', array('liste_projet' => $liste_projet));
+                return $this->render('HelixProjetBundle:Dossier:SearchResultDossier.html.twig', array(
+                    'liste_projet' => $liste_projet, 'form' => $form->createView(),
+                    'best' => $best,
+                    'reponse' => $reponse,
+                    'type' => $type,
+                    'dossiers' => $dossiers,));
 
             }
 
         }
-
-        $em = $this->getDoctrine()->getManager();
-
-        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('etat'=> 1));
-
-        $best = $em->getRepository('HelixProjetBundle:Dossier')->findby(array(),array('note'=>'desc'));
-
-
-        $user = $this->getUser();
-
-        if (($user->getType()) == 'gold') {
-            $type = 'gold';
-        }
-            else{
-            $type = 'silver';
-
-            }
-
-
-            $utilisateur = $user->getId();
-
-
-
-        $preference = $em->getRepository('HelixProjetBundle:Preferences')->findOneBy(array('iduser'=>$utilisateur));
-
-        if ($preference){
-        $withpartner= $preference->getWithPartner();
-        $age=$preference->getAge();
-        $gouvernorat= $preference->getGouvernorat();
-        $alcool = $preference->getAlcool();
-        $theme=$preference->getTheme();
-
-            $reponse[] = array();
-        foreach ($dossiers as $dossier){
-            if (((($dossier->getWithPartner()) == $withpartner ))&&(($dossier->getAge()==$age)) && (($dossier->getGouvernorat()==$gouvernorat))&& (($dossier->getAlcool()== $alcool))&& (($dossier->getTheme()==$theme))){
-                array_push($reponse,$dossier);
-            }
-        }
-        }
-else{
-    $reponse = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('etat'=> 1));
-
-
-}
 
         return $this->render('@HelixProjet/Dossier/index.html.twig', array(
-            'best'=> $best,
-            'reponse'=>$reponse,
-            'type'=>$type,
+            'best' => $best,
+            'reponse' => $reponse,
+            'type' => $type,
             'dossiers' => $dossiers,
             'form' => $form->createView(),
         ));
@@ -111,7 +110,7 @@ else{
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('etat'=> 0));
+        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('etat' => 0));
 
 
         return $this->render('@HelixProjet/Dossier/approuver_dossier.html.twig', array(
@@ -145,8 +144,6 @@ else{
         $dossier = $em->getRepository('HelixProjetBundle:Dossier')->getRecommande();
 
 
-
-
         return $this->render('@HelixProjet/Dossier/recommande.html.twig', array(
             'dossiers' => $dossier,
         ));
@@ -166,13 +163,13 @@ else{
         $em = $this->getDoctrine()->getManager();
 
 
-        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('iduser'=>$id));
+        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('iduser' => $id));
 
         $count = count($dossiers);
 
-        foreach ( $dossiers as $i  ){
+        foreach ($dossiers as $i) {
 
-            if ($i->getBlock() == 0){
+            if ($i->getBlock() == 0) {
 
                 $count = $count - 1;
             }
@@ -180,10 +177,9 @@ else{
         }
 
 
+        $type = $user->getType();
 
-        $type = $user->getType() ;
-
-        if (($type == 'free')&&($count >= 1)){
+        if (($type == 'free') && ($count >= 1)) {
 
             return $this->redirect($this->generateUrl('erreuraddprojet'));
 
@@ -197,9 +193,6 @@ else{
 
             return $this->redirectToRoute('dossier_show', array('id' => $dossier->getId()));
         }
-
-
-
 
 
         return $this->render('@HelixProjet/Dossier/new.html.twig', array(
@@ -218,9 +211,8 @@ else{
 
         $em = $this->getDoctrine()->getManager();
         $iduser = $dossier->getIduser();
-        $user = $em->getRepository('HelixUserBundle:User')->findOneBy(array('id'=>$iduser));
-        $recommande = $em->getRepository('HelixProjetBundle:Dossier') ->findby(array(),array('note'=>'desc'));
-
+        $user = $em->getRepository('HelixUserBundle:User')->findOneBy(array('id' => $iduser));
+        $recommande = $em->getRepository('HelixProjetBundle:Dossier')->findby(array(), array('note' => 'desc'));
 
 
         $pack1 = new Pack();
@@ -229,37 +221,36 @@ else{
 
         $packs = array();
 
-        if ($dossier->getPack()){
-        $idpack1 = $dossier->getPack()->getId();
-        $pack1 = $em->getRepository('HelixProjetBundle:Pack') ->findOneBy(array('id'=>$idpack1));
-        array_push($packs, $pack1);
+        if ($dossier->getPack()) {
+            $idpack1 = $dossier->getPack()->getId();
+            $pack1 = $em->getRepository('HelixProjetBundle:Pack')->findOneBy(array('id' => $idpack1));
+            array_push($packs, $pack1);
         }
 
-        if ($dossier->getPack2()){
+        if ($dossier->getPack2()) {
             $idpack2 = $dossier->getPack2()->getId();
-            $pack2 = $em->getRepository('HelixProjetBundle:Pack') ->findOneBy(array('id'=>$idpack2));
+            $pack2 = $em->getRepository('HelixProjetBundle:Pack')->findOneBy(array('id' => $idpack2));
             array_push($packs, $pack2);
         }
-        if ($dossier->getPack3()){
+        if ($dossier->getPack3()) {
             $idpack3 = $dossier->getPack3()->getId();
-            $pack3 = $em->getRepository('HelixProjetBundle:Pack') ->findOneBy(array('id'=>$idpack3));
+            $pack3 = $em->getRepository('HelixProjetBundle:Pack')->findOneBy(array('id' => $idpack3));
             array_push($packs, $pack3);
 
         }
 
 
         return $this->render('@HelixProjet/Dossier/show.html.twig', array(
-            'packs'=>$packs,
-            'pack1'=>$pack1,
-            'pack2'=>$pack2,
-            'pack3'=>$pack3,
+            'packs' => $packs,
+            'pack1' => $pack1,
+            'pack2' => $pack2,
+            'pack3' => $pack3,
             'user' => $user,
-            'recommande'=>$recommande,
+            'recommande' => $recommande,
             'dossier' => $dossier,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-
 
 
     public function userdossierAction()
@@ -269,7 +260,7 @@ else{
         $user = $this->getUser();
         $id = $user->getId();
 
-        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('iduser'=>$id));
+        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('iduser' => $id));
         return $this->render('@HelixProjet/Dossier/mesdossiers.html.twig', array(
             'dossiers' => $dossiers,
         ));
@@ -359,9 +350,6 @@ else{
     }
 
 
-
-
-
     /**
      * Deletes a dossier entity.
      *
@@ -392,22 +380,20 @@ else{
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('dossier_delete', array('id' => $dossier->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 
     function RechercheAction(Request $req)
     {
-        $dossier=new Dossier();
-        $em=$this->getDoctrine()->getManager();
-        $dossiers=$em->getRepository('HelixProjetBundle:Dossier')->findAll();
-        $form=$this->createForm(DossierType::class,$dossier);
-        if($form->handleRequest($req)->isValid())
-        {
+        $dossier = new Dossier();
+        $em = $this->getDoctrine()->getManager();
+        $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findAll();
+        $form = $this->createForm(DossierType::class, $dossier);
+        if ($form->handleRequest($req)->isValid()) {
 
-            $dossiers=$em->getRepository('HelixProjetBundle:Dossier')->findBy(array('nom'=>$dossier->getNom()));
+            $dossiers = $em->getRepository('HelixProjetBundle:Dossier')->findBy(array('nom' => $dossier->getNom()));
         }
-        return $this->render('HelixProjetBundle:Dossier:RechercheDossier.html.twig',array('dossiers'=>$dossiers,'f'=>$form->createView()));
+        return $this->render('HelixProjetBundle:Dossier:RechercheDossier.html.twig', array('dossiers' => $dossiers, 'f' => $form->createView()));
 
     }
 }

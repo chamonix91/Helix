@@ -1,10 +1,13 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "@HelixUser/Security/login_content.html.twig" %}
 
+{% block content %}
 {% trans_default_domain 'FOSUserBundle' %}
+    <h2>Félici<span class="theme-cl">tations!</span></h2>
 
-{% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <center><p>Votre compte est maintenant activé. Vous pouvez publier votre promier dossier
+            <a href="{{ path('dossier_new') }}"> ici</a></p></center>
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}
-{% endblock fos_user_content %}
+{% endblock content %}
+

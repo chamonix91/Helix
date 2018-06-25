@@ -74,11 +74,16 @@ fos_user:
     firewall_name: main
     user_class: Helix\UserBundle\Entity\User
     from_email:
-        address:  yourmail@yourdomain.com
-        sender_name: demo
+        address:  dreamlifedev@gmail.com
+        sender_name: dreamlife
     registration:
         form:
             type: Helix\UserBundle\Form\RegistrationType
+    resetting:
+        email:
+            from_email:
+                address: dreamlifedev@gmail.com
+                sender_name: dreamlife
 
 
 #fos_messagebundle

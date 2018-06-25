@@ -48,40 +48,45 @@
                             <div class="widget-boxed-header">
                                 <h4><i class="fa fa-search"></i> Filtrer par</h4>
                             </div>
-                            <form method="post" >
+                            <form method="post">
 
                                 {{ form_start(form) }}
-                            <div class="widget-boxed-body padd-top-10 padd-bot-0">
-                                <div class="side-list">
-                                    <ul class="price-range">
+                                <div class="widget-boxed-body padd-top-10 padd-bot-0">
+                                    <div class="side-list">
+                                        <ul class="price-range">
 
-                                        <li>
-                                            {{ form_widget(form.alcool, { 'attr': {'class': "form-control"} }) }}
-                                        </li>
-                                        <li>
-                                            {{ form_widget(form.withPartner, { 'attr': {'class': "form-control"} }) }}
-                                        </li>
-                                        <li>
-                                            {{ form_widget(form.gouvernorat, { 'attr': {'class': "form-control"} }) }}
+                                            <li>
+                                                Alcool:
+                                                {{ form_widget(form.alcool, { 'attr': {'class': "form-control"} }) }}
+                                            </li>
+                                            <li>
+                                                Projets avec partenaire:
+                                                {{ form_widget(form.withPartner, { 'attr': {'class': "form-control"} }) }}
+                                            </li>
+                                            <li>
+                                                Gouvernorat:
+                                                {{ form_widget(form.gouvernorat, { 'attr': {'class': "form-control"} }) }}
 
-                                        </li>
-                                        <li>
-                                            {{ form_widget(form.theme, { 'attr': {'class': "form-control"} }) }}
+                                            </li>
+                                            <li>
+                                                Thème:
+                                                {{ form_widget(form.theme, { 'attr': {'class': "form-control"} }) }}
 
-                                        </li>
-                                        <li>
-                                            {{ form_widget(form.age, { 'attr': {'class': "form-control"} }) }}
+                                            </li>
+                                            <li>
+                                                Tranche d'âge:
+                                                {{ form_widget(form.age, { 'attr': {'class': "form-control"} }) }}
 
-                                        </li>
+                                            </li>
 
-                                    </ul>
+                                        </ul>
+                                    </div>
+
+                                    <input type="submit" class="btn btn-primary"/>
+
+                                    {{ form_end(form) }}
+
                                 </div>
-
-                                <input type="submit" class="btn btn-primary" />
-
-                                {{ form_end(form) }}
-
-                            </div>
                             </form>
                         </div>
                         <!-- End: Search By Price -->
@@ -94,26 +99,30 @@
                             <div class="widget-boxed-body padd-top-5">
                                 <div class="side-list">
                                     <ul class="listing-list">
-                                        {% set x = 1  %}
+                                        {% set x = 1 %}
                                         {% for b in best %}
-                                        {% if x < 6 %}
+                                            {% if x < 6 %}
 
-                                        <li>
-                                            <a href="{{ path('dossier_show', {'id': b.id}) }}">
-                                                <div class="listing-list-img">
-                                                    <img src="{{ asset('assets/img/image-5.jpg') }}" class="img-responsive" alt="">
-                                                </div>
-                                            </a>
-                                            <div class="listing-list-info">
-                                                <h5><a href="{{ path('dossier_show', {'id': b.id}) }}" title="Listing">{{ b.nom }}</a></h5>
-                                                <div class="listing-post-meta">
-                                                    {% if b.note == 0 %}Pas de recommandations{% else %}<span class="updated">Nombre de recommandations</span> : <a href="#" rel="tag">{{ b.note }}</a>{% endif %}
-                                                </div>
-                                            </div>
-                                        </li>
+                                                <li>
+                                                    <a href="{{ path('dossier_show', {'id': b.id}) }}">
+                                                        <div class="listing-list-img">
+                                                            <img src="{{ asset('assets/img/dossier.png') }}"
+                                                                 class="img-responsive" alt="">
+                                                        </div>
+                                                    </a>
+                                                    <div class="listing-list-info">
+                                                        <h5><a href="{{ path('dossier_show', {'id': b.id}) }}"
+                                                               title="Listing">{{ b.nom }}</a></h5>
+                                                        <div class="listing-post-meta">
+                                                            {% if b.note == 0 %}Pas de recommandations{% else %}<span
+                                                                    class="updated">Nombre de recommandations</span> :
+                                                                <a href="#" rel="tag">{{ b.note }}</a>{% endif %}
+                                                        </div>
+                                                    </div>
+                                                </li>
 
-                                            {% set x = x + 1 %}
-                                        {% endif %}
+                                                {% set x = x + 1 %}
+                                            {% endif %}
                                         {% endfor %}
 
                                     </ul>
@@ -153,79 +162,87 @@
                         </div>
                     </div>#}
                     <!-- End Filter option -->
-
+{% block projects %}
                     <div class="row mrg-0">
-{% if type == 'silver' %}
-                        {% for dossier in dossiers %}
-                        <div class="col-md-4 col-sm-6">
-                            {% if dossier.note > 0 %}
-                            <span class="featured-listing"></span>
-                            {% endif %}
-                            <div class="listing-shot grid-style">
-                                <a href="{{ path('dossier_show', {'id': dossier.id}) }}">
-                                    <div class="listing-shot-img">
-                                        <img src="{{ asset('assets/img/building-icon.png') }}" class="img-responsive" alt="">
-                                        <span class="approve-listing"><i class="fa fa-check"></i></span>
-                                    </div>
-                                    <div class="listing-shot-caption">
-                                        <h4>{{ dossier.nom }}</h4>
-                                        <p class="listing-location">Partenaire(s): {{ dossier.partenaire }}</p>
-                                        <span class="like-listing style-2"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                                    </div>
-                                </a>
-                                <div class="listing-shot-info">
-                                    <div class="row extra">
-                                        <div class="col-md-12">
-                                            <div class="listing-detail-info">
-                                                <span><i class="fa fa-phone" aria-hidden="true"></i> </span>
-                                                <span><i class="fa fa-envelope" aria-hidden="true"></i>{{ dossier.idUser.email }}</span>
+                        {% if type == 'silver' %}
+                            {% for dossier in dossiers %}
+                                <div class="col-md-4 col-sm-6">
+                                    {% if dossier.note > 0 %}
+                                        <span class="featured-listing"></span>
+                                    {% endif %}
+                                    <div class="listing-shot grid-style">
+                                        <a href="{{ path('dossier_show', {'id': dossier.id}) }}">
+                                            <div class="listing-shot-img">
+                                                <img src="{{ asset('assets/img/building-icon.png') }}"
+                                                     class="img-responsive" alt="">
+                                                <span class="approve-listing"><i class="fa fa-check"></i></span>
+                                            </div>
+                                            <div class="listing-shot-caption">
+                                                <h4>{{ dossier.nom }}</h4>
+                                                <p class="listing-location">Partenaire(s): {{ dossier.partenaire }}</p>
+                                                <span class="like-listing style-2"><i class="fa fa-heart-o"
+                                                                                      aria-hidden="true"></i></span>
+                                            </div>
+                                        </a>
+                                        <div class="listing-shot-info">
+                                            <div class="row extra">
+                                                <div class="col-md-12">
+                                                    <div class="listing-detail-info">
+                                                        <span><i class="fa fa-phone" aria-hidden="true"></i> </span>
+                                                        <span><i class="fa fa-envelope"
+                                                                 aria-hidden="true"></i>{{ dossier.idUser.email }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
+                            {% endfor %}
+                        {% else %}
 
-                            </div>
-                        </div>
-                        {% endfor %}
-{% else %}
+                            {% for dossier in reponse %}
+                                {% if dossier %}
+                                    <div class="col-md-4 col-sm-6">
+                                        {% if dossier.note > 0 %}
+                                            <span class="featured-listing"></span>
+                                        {% endif %}
+                                        <div class="listing-shot grid-style">
+                                            <a href="{{ path('dossier_show', {'id': dossier.id}) }}">
+                                                <div class="listing-shot-img">
+                                                    <img src="{{ asset('assets/img/building-icon.png') }}"
+                                                         class="img-responsive" alt="">
+                                                    <span class="approve-listing"><i class="fa fa-check"></i></span>
+                                                </div>
+                                                <div class="listing-shot-caption">
+                                                    <h4>{{ dossier.nom }}</h4>
+                                                    <p class="listing-location">
+                                                        Partenaire(s): {{ dossier.partenaire }}</p>
+                                                    <span class="like-listing style-2"><i class="fa fa-heart-o"
+                                                                                          aria-hidden="true"></i></span>
+                                                </div>
+                                            </a>
+                                            <div class="listing-shot-info">
+                                                <div class="row extra">
+                                                    <div class="col-md-12">
+                                                        <div class="listing-detail-info">
+                                                            <span><i class="fa fa-phone" aria-hidden="true"></i> </span>
+                                                            <span><i class="fa fa-envelope"
+                                                                     aria-hidden="true"></i>{{ dossier.idUser.email }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-    {% for dossier in reponse %}
-        {% if dossier %}
-        <div class="col-md-4 col-sm-6">
-            {% if dossier.note > 0 %}
-                <span class="featured-listing"></span>
-            {% endif %}
-            <div class="listing-shot grid-style">
-                <a href="{{ path('dossier_show', {'id': dossier.id}) }}">
-                    <div class="listing-shot-img">
-                        <img src="{{ asset('assets/img/building-icon.png') }}" class="img-responsive" alt="">
-                        <span class="approve-listing"><i class="fa fa-check"></i></span>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        {% endif %}
+
                     </div>
-                    <div class="listing-shot-caption">
-                        <h4>{{ dossier.nom }}</h4>
-                        <p class="listing-location">Partenaire(s): {{ dossier.partenaire }}</p>
-                        <span class="like-listing style-2"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                    </div>
-                </a>
-                <div class="listing-shot-info">
-                    <div class="row extra">
-                        <div class="col-md-12">
-                            <div class="listing-detail-info">
-                                <span><i class="fa fa-phone" aria-hidden="true"></i> </span>
-                                <span><i class="fa fa-envelope" aria-hidden="true"></i>{{ dossier.idUser.email }}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-            {% endif %}
-    {% endfor %}
-
-{% endif %}
-
-                    </div>
+                    {% endblock projects %}
                 </div>
                 <!-- End All Listing -->
             </div>
