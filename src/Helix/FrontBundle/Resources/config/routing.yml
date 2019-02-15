@@ -14,3 +14,7 @@ aboutus:
 erreuraddprojet:
     path:     /ajoutDossier
     defaults: { _controller: HelixFrontBundle:Main:erreuraddproject }
+
+contact:
+    path:     /contact
+    defaults: { _controller: HelixFrontBundle:Contact:contact }

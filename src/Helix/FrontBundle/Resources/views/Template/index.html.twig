@@ -69,16 +69,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li >
+                    {#<li >
                         <a href="{{ path('allsponsors') }}" class="dropdown-toggle" data-toggle="dropdown">sponsors</a>
-                    </li>
+                    </li>#}
                     <li>
-                        <a href="{{ path('allarticles') }}" class="dropdown-toggle" data-toggle="dropdown">blog</a>
+                        <a href="{{ path('allarticles') }}" class="dropdown-toggle" data-toggle="dropdown">Actualité</a>
 
                     </li>
-                    <li>
+                    {#<li>
                         <a href="{{ path('aboutus') }}" class="dropdown-toggle" data-toggle="dropdown">Qui sommes-nous</a>
-                    </li>
+                    </li>#}
 
                     {#<li><a  href="javascript:void(0)"  data-toggle="modal" data-target="#signup">Sign In</a></li>#}
                 </ul>
@@ -169,13 +169,13 @@
         <div class="container">
             <div class="banner-caption">
                 <div class="col-md-12 col-sm-12 banner-text">
-                    <h1>Découvrez la plateforme <span>Helix</span></h1><br><br>
+                    <h1>Découvrez <span>Helix</span></h1><br><br>
                     <p></p>
                     <div class="banner-btn">
-                        <a href="#" class="btn contact-btn"><i class="ti-headphone"></i>Contact</a>
-                        <a href="#dest" class="btn listing-btn"><i class="ti-location-pin"></i>Découvrez helix</a>
+                        <a href="{{ path('contact') }}" class="btn contact-btn"><i class="ti-world"></i>Je suis un sponsor</a>
+                        <a href="{{ path('fos_user_registration_register') }}" class="btn listing-btn"><i class="ti-stats-up"></i>Je cherche un sponsor</a>
                     </div>
-                    <div class="banner-info">
+                    {#<div class="banner-info">
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
                                 <i class="ti-location-pin"></i>
@@ -190,7 +190,7 @@
                                 <span>+216 xx xxx xxx<br> +216 xx xxx xxx</span>
                             </div>
                         </div>
-                    </div>
+                    </div>#}
                 </div>
             </div>
         </div>
@@ -225,6 +225,7 @@
                         Tenez-vous informés des nouveautés événementielles.<br><br>
 
                         </p>
+                        <center><a href="{{ path('fos_user_registration_register') }}" class="btn listing-btn">Demander de sponsoring</a></center>
                     </div>
                     <div class="read">
                         <a href="#">+</a>
@@ -248,6 +249,7 @@
                             Boostez et optimisez vos actions de sponsoring. <br>
 
                         </p>
+                        <center><a href="{{ path('contact') }}" class="btn listing-btn">Devenir un sponsor</a></center>
                     </div>
                     <div class="read">
                         <a href="#">+</a>
@@ -276,19 +278,20 @@
                         <a href="#">
                             <div class="listing-shot-img">
                                 <img src="{{ asset('assets/img/category/education.jpg') }}" class="img-responsive" alt="">
-                                <span class="like-listing"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                                <span class="like-listing"></span>
                             </div>
                             <div class="listing-shot-caption">
                                 <h4>Premier Projet</h4>
-                                <p class="listing-location">Adresse , Cité</p>
+                                <p class="listing-location">Association</p>
                             </div>
                         </a>
                         <div class="listing-shot-info">
                             <div class="row extra">
                                 <div class="col-md-12">
                                     <div class="listing-detail-info">
-                                        <span><i class="fa fa-phone" aria-hidden="true"></i> +216 xx xxx xxx</span>
-                                        <span><i class="fa fa-globe" aria-hidden="true"></i> www.monsite.com</span>
+
+                                        {#<span><i class="fa fa-phone" aria-hidden="true"></i> +216 xx xxx xxx</span>
+                                        <span><i class="fa fa-globe" aria-hidden="true"></i> www.monsite.com</span>#}
                                     </div>
                                 </div>
                             </div>
@@ -296,14 +299,15 @@
                         <div class="listing-shot-info rating">
                             <div class="row extra">
                                 <div class="col-md-7 col-sm-7 col-xs-6">
+                                    <span><h3> 25,000 Dt</h3></span>
+                                </div>
+                                <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
+                                    {#<br>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star-half-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>
-                                <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
-                                    <a href="#" class="detail-link">Détails</a>
+                                    <i class="fa fa-star" aria-hidden="true"></i>#}
                                 </div>
                             </div>
                         </div>
@@ -315,19 +319,20 @@
                         <a href="#">
                             <div class="listing-shot-img">
                                 <img src="{{ asset('assets/img/category/business.jpg') }}" class="img-responsive" alt="">
-                                <span class="like-listing"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                                <span class="like-listing"></span>
                             </div>
                             <div class="listing-shot-caption">
                                 <h4>Deuxième Projet</h4>
-                                <p class="listing-location">Adresse , Cité</p>
+                                <p class="listing-location">Association</p>
                             </div>
                         </a>
                         <div class="listing-shot-info">
                             <div class="row extra">
                                 <div class="col-md-12">
                                     <div class="listing-detail-info">
-                                        <span><i class="fa fa-phone" aria-hidden="true"></i> +216 xx xxx xxx</span>
-                                        <span><i class="fa fa-globe" aria-hidden="true"></i> www.monsite.com</span>
+
+                                        {#<span><i class="fa fa-phone" aria-hidden="true"></i> +216 xx xxx xxx</span>
+                                        <span><i class="fa fa-globe" aria-hidden="true"></i> www.monsite.com</span>#}
                                     </div>
                                 </div>
                             </div>
@@ -335,14 +340,15 @@
                         <div class="listing-shot-info rating">
                             <div class="row extra">
                                 <div class="col-md-7 col-sm-7 col-xs-6">
+                                    <span><h3> 13,000 Dt</h3></span>
+                                </div>
+                                <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
+                                    {#<br>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star-half-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>
-                                <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
-                                    <a href="#" class="detail-link">Détails</a>
+                                    <i class="fa fa-star" aria-hidden="true"></i>#}
                                 </div>
                             </div>
                         </div>
@@ -354,19 +360,20 @@
                         <a href="#">
                             <div class="listing-shot-img">
                                 <img src="{{ asset('assets/img/category/art.jpg') }}" class="img-responsive" alt="">
-                                <span class="like-listing"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                                <span class="like-listing"></span>
                             </div>
                             <div class="listing-shot-caption">
-                                <h4>Premier Projet</h4>
-                                <p class="listing-location">Adresse , Cité</p>
+                                <h4>Troisième Projet</h4>
+                                <p class="listing-location">Entreprise</p>
                             </div>
                         </a>
                         <div class="listing-shot-info">
                             <div class="row extra">
                                 <div class="col-md-12">
                                     <div class="listing-detail-info">
-                                        <span><i class="fa fa-phone" aria-hidden="true"></i> +216 xx xxx xxx</span>
-                                        <span><i class="fa fa-globe" aria-hidden="true"></i> www.monsite.com</span>
+
+                                        {#<span><i class="fa fa-phone" aria-hidden="true"></i> +216 xx xxx xxx</span>
+                                        <span><i class="fa fa-globe" aria-hidden="true"></i> www.monsite.com</span>#}
                                     </div>
                                 </div>
                             </div>
@@ -374,14 +381,15 @@
                         <div class="listing-shot-info rating">
                             <div class="row extra">
                                 <div class="col-md-7 col-sm-7 col-xs-6">
+                                    <span><h3> 100,000 Dt</h3></span>
+                                </div>
+                                <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
+                                    {#<br>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star" aria-hidden="true"></i>
                                     <i class="color fa fa-star-half-o" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </div>
-                                <div class="col-md-5 col-sm-5 col-xs-6 pull-right">
-                                    <a href="#" class="detail-link">Détails</a>
+                                    <i class="fa fa-star" aria-hidden="true"></i>#}
                                 </div>
                             </div>
                         </div>
@@ -582,23 +590,24 @@
                 <div class="col-md-3 col-sm-12 theme-bg">
                     <div class="footer-widget">
                         <div class="textwidget">
-                            <h3 class="widgettitle widget-title">Restons en contact</h3>
+                            <h3 class="widgettitle widget-title">Contact</h3>
                             <p>7744 Adresse helix, rue<br>
                                 cité</p>
                             <p><strong>Email:</strong> contact@helix.com.tn</p>
                             <p>
-                                <strong>Call:</strong> <a href="tel:+216 xx xxx xxx">+216 xx xxx xxx</a>
+                                <strong>Téléphone:</strong> <a href="tel:+216 xx xxx xxx">+216 xx xxx xxx</a>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5 col-sm-4">
                     <div class="footer-widget">
-                        <h3 class="widgettitle widget-title">Site Map</h3>
+                        <h3 class="widgettitle widget-title">Accès Rapide</h3>
                         <ul class="footer-navigation">
-                            <li><a href="#">Accueil</a></li>
-                            <li><a href="#">Tous les sponsors</a></li>
-                            <li><a href="#">Blog</a></li>
+                            <li><a href="{{ path('index') }}">Accueil</a></li>
+                            <li><a href="{{ path('allsponsors') }}">Tous les sponsors</a></li>
+                            <li><a href="{{ path('aboutus') }}">Qui sommes-nou</a></li>
+                            <li><a href="{{ path('allarticles') }}">Actualité</a></li>
 
                         </ul>
                     </div>
@@ -610,10 +619,10 @@
                              class="img-responsive"/>
                         <ul class="footer-social">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            {#<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>#}
                         </ul>
                     </div>
                 </div>
